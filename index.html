@@ -125,6 +125,17 @@
     <footer>
         &copy; 2025 Solaro. Besoin d'aide ? Contactez admin@solaro.green
     </footer>
+<script>
+  function initAutocomplete() {
+    var input = document.getElementById('address-input');
+    var autocomplete = new google.maps.places.Autocomplete(input);
+  }
+</script>
 
+<script 
+  src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCI5Ycv1SS_YrpkUPdX5CpdBQQr7uQIt9I&libraries=places&callback=initAutocomplete" 
+  async defer>
+</script>
 </body>
 </html>
+
