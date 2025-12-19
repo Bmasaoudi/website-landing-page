@@ -87,20 +87,14 @@
 
     <div class="container">
 
-        <div class="card" style="background: white;">
-            <h2 style="color: #101820;">📅 Option 1 : Réservez votre créneau</h2>
-            <p style="color: #555;">Choisissez l'heure qui vous convient pour échanger avec un expert.</p>
-            
-            <div class="calendly-inline-widget" data-url="https://calendly.com/bm-mlg-elec/30min" style="min-width:320px;height:700px;"></div>
-            <script type="text/javascript" src="https://assets.calendly.com/assets/external/widget.js" async></script>
-        </div>
-
         <div class="card">
-            <h2>📝 Option 2 : Demandez à être rappelé</h2>
+            <h2>📝 Option 1 : Demandez à être rappelé</h2>
             <p>Remplissez le formulaire ci-dessous pour une étude gratuite.</p>
 
             <form action="https://formspree.io/f/mzdpzjyy" method="POST">
                 
+                <input type="hidden" name="_next" value="https://solaro.green">
+
                 <label>Nom complet</label>
                 <input type="text" name="nom" placeholder="Votre nom" required>
 
@@ -118,6 +112,14 @@
 
                 <button type="submit">Envoyer la demande →</button>
             </form>
+        </div>
+
+        <div class="card" style="background: white;">
+            <h2 style="color: #101820;">📅 Option 2 : Réservez votre créneau</h2>
+            <p style="color: #555;">Choisissez l'heure qui vous convient pour échanger avec un expert.</p>
+            
+            <div class="calendly-inline-widget" data-url="https://calendly.com/bm-mlg-elec/30min" style="min-width:320px;height:700px;"></div>
+            <script type="text/javascript" src="https://assets.calendly.com/assets/external/widget.js" async></script>
         </div>
 
     </div>
