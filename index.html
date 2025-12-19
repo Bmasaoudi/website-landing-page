@@ -3,36 +3,28 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Réservez votre étude - Solaro</title>
+    <title>Solaro - Étude & Réservation</title>
     <style>
         body { margin: 0; padding: 0; font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif; background-color: #f3f6f8; color: #333; }
         
-        /* En-tête vert */
-        header {
-            background-color: #27ae60;
-            color: white;
-            text-align: center;
-            padding: 40px 20px;
-        }
+        /* HEADER */
+        header { background-color: #27ae60; color: white; text-align: center; padding: 40px 20px; }
         h1 { margin: 0; font-size: 28px; }
-        p { margin-top: 10px; font-size: 18px; opacity: 0.9; }
+        p.subtitle { margin-top: 10px; font-size: 18px; opacity: 0.9; }
 
-        /* Conteneur du calendrier */
-        .calendar-section {
-            display: flex;
-            justify-content: center;
-            margin-top: -30px; /* Effet de chevauchement sympa */
-            padding-bottom: 50px;
-        }
+        /* CONTENEUR PRINCIPAL */
+        .container { max-width: 800px; margin: -30px auto 50px; padding: 0 20px; }
+
+        /* CARTES BLANCHES */
+        .card { background: white; border-radius: 12px; box-shadow: 0 10px 30px rgba(0,0,0,0.1); overflow: hidden; margin-bottom: 40px; padding: 30px; }
         
-        .card {
-            background: white;
-            border-radius: 12px;
-            box-shadow: 0 10px 30px rgba(0,0,0,0.1);
-            overflow: hidden;
-            width: 100%;
-            max-width: 1000px;
-        }
+        h2 { color: #27ae60; border-bottom: 2px solid #eee; padding-bottom: 15px; margin-top: 0; }
+
+        /* FORMULAIRE */
+        label { display: block; margin-top: 15px; font-weight: bold; color: #555; }
+        input, textarea { width: 100%; padding: 12px; margin-top: 5px; border: 1px solid #ccc; border-radius: 6px; box-sizing: border-box; font-size: 16px; }
+        button { width: 100%; padding: 15px; background: #2c3e50; color: white; border: none; border-radius: 6px; font-size: 18px; font-weight: bold; cursor: pointer; margin-top: 20px; }
+        button:hover { background: #1a252f; }
 
         footer { text-align: center; padding: 20px; font-size: 14px; color: #888; }
     </style>
@@ -40,15 +32,45 @@
 <body>
 
     <header>
-        <h1>Obtenez votre étude personnalisée</h1>
-        <p>Choisissez un créneau ci-dessous pour échanger avec un expert Solaro.</p>
+        <h1>Votre projet solaire commence ici</h1>
+        <p class="subtitle">Réservez un créneau OU remplissez le formulaire ci-dessous</p>
     </header>
 
-    <div class="calendar-section">
+    <div class="container">
+
         <div class="card">
+            <h2>📅 Option 1 : Réservez votre créneau direct</h2>
+            <p>Choisissez l'heure qui vous convient pour échanger avec un expert.</p>
+            
             <div class="calendly-inline-widget" data-url="https://calendly.com/bm-mlg-elec/30min" style="min-width:320px;height:700px;"></div>
             <script type="text/javascript" src="https://assets.calendly.com/assets/external/widget.js" async></script>
         </div>
+
+        <div class="card">
+            <h2>📝 Option 2 : Demandez à être rappelé</h2>
+            <p>Vous ne trouvez pas de créneau ? Laissez-nous vos coordonnées complètes.</p>
+
+            <form action="https://formspree.io/f/mzdpzjyy" method="POST">
+                
+                <label>Nom complet</label>
+                <input type="text" name="nom" placeholder="Votre nom" required>
+
+                <label>Adresse du projet</label>
+                <input type="text" name="adresse" placeholder="Adresse complète" required>
+
+                <label>Email</label>
+                <input type="email" name="email" placeholder="votre@email.com" required>
+
+                <label>Téléphone</label>
+                <input type="tel" name="telephone" placeholder="06 00 00 00 00" required>
+
+                <label>Message (Optionnel)</label>
+                <textarea name="message" rows="4" placeholder="Détails sur votre projet..."></textarea>
+
+                <button type="submit">Envoyer la demande</button>
+            </form>
+        </div>
+
     </div>
 
     <footer>
