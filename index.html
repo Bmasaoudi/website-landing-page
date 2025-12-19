@@ -1,157 +1,147 @@
 <!DOCTYPE html>
 <html lang="fr">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Solaro - Étude & Réservation</title>
-    <style>
-        /* DESIGN DARK MODE */
-        body { 
-            margin: 0; 
-            padding: 0; 
-            font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif; 
-            background-color: #101820;
-            color: #ffffff;
-        }
-        
-        /* HEADER */
-        header { 
-            background-color: #101820; 
-            text-align: center; 
-            padding: 40px 20px; 
-            border-bottom: 1px solid #2c3e50;
-        }
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Solaro - Étude & Réservation</title>
+    <style>
+        /* DESIGN DARK MODE */
+        body { 
+            margin: 0; 
+            padding: 0; 
+            font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif; 
+            background-color: #101820;
+            color: #ffffff;
+        }
+        
+        /* HEADER */
+        header { 
+            background-color: #101820; 
+            text-align: center; 
+            padding: 40px 20px; 
+            border-bottom: 1px solid #2c3e50;
+        }
+        h1 { margin: 0; font-size: 28px; color: #ffffff; }
+        p.subtitle { margin-top: 10px; font-size: 18px; color: #aab7c4; }
 
-        /* LOGO STYLE (Added this back in for you) */
-        .logo {
-            display: block;
-            margin: 0 auto 20px auto;
-            max-width: 150px;
-            height: auto;
-        }
+        /* CONTENEUR */
+        .container { max-width: 800px; margin: 30px auto 50px; padding: 0 20px; }
 
-        h1 { margin: 0; font-size: 28px; color: #ffffff; }
-        p.subtitle { margin-top: 10px; font-size: 18px; color: #aab7c4; }
+        /* CARTES */
+        .card { 
+            background: #1e2a38;
+            border-radius: 12px; 
+            box-shadow: 0 10px 30px rgba(0,0,0,0.3); 
+            overflow: hidden; 
+            margin-bottom: 40px; 
+            padding: 30px; 
+            border: 1px solid #2c3e50;
+        }
+        
+        h2 { color: #f39c12; border-bottom: 1px solid #2c3e50; padding-bottom: 15px; margin-top: 0; }
+        p { color: #d1d5db; }
 
-        /* CONTENEUR */
-        .container { max-width: 800px; margin: 30px auto 50px; padding: 0 20px; }
+        /* FORMULAIRE */
+        label { display: block; margin-top: 15px; font-weight: bold; color: #aab7c4; font-size: 14px; }
+        
+        input, textarea { 
+            width: 100%; 
+            padding: 15px; 
+            margin-top: 8px; 
+            background-color: #2c3e50;
+            border: 1px solid #34495e; 
+            border-radius: 8px; 
+            box-sizing: border-box; 
+            font-size: 16px; 
+            color: white; 
+        }
+        
+        input::placeholder, textarea::placeholder { color: #7f8c8d; }
+        input:focus, textarea:focus { outline: none; border-color: #f39c12; }
 
-        /* CARTES */
-        .card { 
-            background: #1e2a38;
-            border-radius: 12px; 
-            box-shadow: 0 10px 30px rgba(0,0,0,0.3); 
-            overflow: hidden; 
-            margin-bottom: 40px; 
-            padding: 30px; 
-            border: 1px solid #2c3e50;
-        }
-        
-        h2 { color: #f39c12; border-bottom: 1px solid #2c3e50; padding-bottom: 15px; margin-top: 0; }
-        p { color: #d1d5db; }
+        /* BOUTON */
+        button { 
+            width: 100%; 
+            padding: 15px; 
+            background: #f39c12;
+            color: white; 
+            border: none; 
+            border-radius: 8px; 
+            font-size: 18px; 
+            font-weight: bold; 
+            cursor: pointer; 
+            margin-top: 25px; 
+            transition: background 0.3s;
+        }
+        button:hover { background: #e67e22; }
 
-        /* FORMULAIRE */
-        label { display: block; margin-top: 15px; font-weight: bold; color: #aab7c4; font-size: 14px; }
-        
-        input, textarea { 
-            width: 100%; 
-            padding: 15px; 
-            margin-top: 8px; 
-            background-color: #2c3e50;
-            border: 1px solid #34495e; 
-            border-radius: 8px; 
-            box-sizing: border-box; 
-            font-size: 16px; 
-            color: white; 
-        }
-        
-        input::placeholder, textarea::placeholder { color: #7f8c8d; }
-        input:focus, textarea:focus { outline: none; border-color: #f39c12; }
-
-        /* BOUTON */
-        button { 
-            width: 100%; 
-            padding: 15px; 
-            background: #f39c12;
-            color: white; 
-            border: none; 
-            border-radius: 8px; 
-            font-size: 18px; 
-            font-weight: bold; 
-            cursor: pointer; 
-            margin-top: 25px; 
-            transition: background 0.3s;
-        }
-        button:hover { background: #e67e22; }
-
-        footer { text-align: center; padding: 20px; font-size: 14px; color: #555; }
-    </style>
+        footer { text-align: center; padding: 20px; font-size: 14px; color: #555; }
+    </style>
 </head>
 <body>
 
-    <header>
-        <img src="Solarologo.png" alt="Solaro Logo" class="logo">
-        
-        <h1>Votre projet solaire commence ici</h1>
-        <p class="subtitle">Réservez un créneau ou contactez-nous directement</p>
-    </header>
+    <header>
+        <h1>Votre projet solaire commence ici</h1>
+        <p class="subtitle">Réservez un créneau ou contactez-nous directement</p>
+    </header>
 
-    <div class="container">
+    <div class="container">
 
-        <div class="card">
-            <h2>📝 Option 1 : Demandez à être rappelé</h2>
-            <p>Remplissez le formulaire ci-dessous pour une étude gratuite.</p>
+        <div class="card">
+            <h2>📝 Option 1 : Demandez à être rappelé</h2>
+            <p>Remplissez le formulaire ci-dessous pour une étude gratuite.</p>
 
-            <form action="https://formspree.io/f/mzdpzjyy" method="POST">
-                
-                <input type="hidden" name="_next" value="https://solaro.green">
+            <form action="https://formspree.io/f/mzdpzjyy" method="POST">
+                
+                <input type="hidden" name="_next" value="https://solaro.green">
 
-                <label>Nom complet</label>
-                <input type="text" name="nom" placeholder="Votre nom" required>
+                <label>Nom complet</label>
+                <input type="text" name="nom" placeholder="Votre nom" required>
 
-                <label>Adresse du projet</label>
-                <input id="address-input" type="text" name="adresse" placeholder="Adresse complète" required>
+                <label>Adresse du projet</label>
+                <input id="address-input" type="text" name="adresse" placeholder="Adresse complète" required>
 
-                <label>Email</label>
-                <input type="email" name="email" placeholder="votre@email.com" required>
+                <label>Email</label>
+                <input type="email" name="email" placeholder="votre@email.com" required>
 
-                <label>Téléphone</label>
-                <input type="tel" name="telephone" placeholder="06 00 00 00 00" required>
+                <label>Téléphone</label>
+                <input type="tel" name="telephone" placeholder="06 00 00 00 00" required>
 
-                <label>Vos disponibilités (30 min)</label>
-                <textarea name="message" rows="3" placeholder="Indiquez vos préférences pour un appel..."></textarea>
+                <label>Vos disponibilités (30 min)</label>
+                <textarea name="message" rows="3" placeholder="Indiquez vos préférences pour un appel..."></textarea>
 
-                <button type="submit">Envoyer la demande →</button>
-            </form>
-        </div>
+                <button type="submit">Envoyer la demande →</button>
+            </form>
+        </div>
 
-        <div class="card" style="background: white;">
-            <h2 style="color: #101820;">📅 Option 2 : Réservez votre créneau</h2>
-            <p style="color: #555;">Choisissez l'heure qui vous convient pour échanger avec un expert.</p>
-            
-            <div class="calendly-inline-widget" data-url="https://calendly.com/bm-mlg-elec/30min" style="min-width:320px;height:700px;"></div>
-            <script type="text/javascript" src="https://assets.calendly.com/assets/external/widget.js" async></script>
-        </div>
+        <div class="card" style="background: white;">
+            <h2 style="color: #101820;">📅 Option 2 : Réservez votre créneau</h2>
+            <p style="color: #555;">Choisissez l'heure qui vous convient pour échanger avec un expert.</p>
+            
+            <div class="calendly-inline-widget" data-url="https://calendly.com/bm-mlg-elec/30min" style="min-width:320px;height:700px;"></div>
+            <script type="text/javascript" src="https://assets.calendly.com/assets/external/widget.js" async></script>
+        </div>
 
-    </div>
+    </div>
 
-    <footer>
-        &copy; 2025 Solaro. Besoin d'aide ? Contactez admin@solaro.green
-    </footer>
+    <footer>
+        &copy; 2025 Solaro. Besoin d'aide ? Contactez admin@solaro.green
+    </footer>
 
-    <script>
-      function initAutocomplete() {
-        var input = document.getElementById('address-input');
-        if (input) {
-            new google.maps.places.Autocomplete(input);
-        }
-      }
-    </script>
+    <script>
+      function initAutocomplete() {
+        var input = document.getElementById('address-input');
+        if (input) {
+            new google.maps.places.Autocomplete(input);
+        }
+      }
+    </script>
 
-    <script 
-      src="https://maps.googleapis.com/maps/api/js?key=AIzaSyAOZNfrXUN3NbW3An1izZO77WD3vQRmnEs&libraries=places&callback=initAutocomplete" 
-      async defer>
-    </script>
+    <script 
+      src="https://maps.googleapis.com/maps/api/js?key=AIzaSyAOZNfrXUN3NbW3An1izZO77WD3vQRmnEs&libraries=places&callback=initAutocomplete" 
+      async defer>
+    </script>
 
 </body>
 </html>
+use this code
