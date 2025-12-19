@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Réservez votre étude - Solaro</title>
+    <style>
+        body { margin: 0; padding: 0; font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif; background-color: #f3f6f8; color: #333; }
+        
+        /* En-tête vert */
+        header {
+            background-color: #27ae60;
+            color: white;
+            text-align: center;
+            padding: 40px 20px;
+        }
+        h1 { margin: 0; font-size: 28px; }
+        p { margin-top: 10px; font-size: 18px; opacity: 0.9; }
+
+        /* Conteneur du calendrier */
+        .calendar-section {
+            display: flex;
+            justify-content: center;
+            margin-top: -30px; /* Effet de chevauchement sympa */
+            padding-bottom: 50px;
+        }
+        
+        .card {
+            background: white;
+            border-radius: 12px;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+            overflow: hidden;
+            width: 100%;
+            max-width: 1000px;
+        }
+
+        footer { text-align: center; padding: 20px; font-size: 14px; color: #888; }
+    </style>
+</head>
+<body>
+
+    <header>
+        <h1>Obtenez votre étude personnalisée</h1>
+        <p>Choisissez un créneau ci-dessous pour échanger avec un expert Solaro.</p>
+    </header>
+
+    <div class="calendar-section">
+        <div class="card">
+            <div class="calendly-inline-widget" data-url="https://calendly.com/bm-mlg-elec/30min" style="min-width:320px;height:700px;"></div>
+            <script type="text/javascript" src="https://assets.calendly.com/assets/external/widget.js" async></script>
+        </div>
+    </div>
+
+    <footer>
+        &copy; 2025 Solaro. Besoin d'aide ? Contactez admin@solaro.green
+    </footer>
+
+</body>
+</html>
