@@ -11,25 +11,24 @@
             display: flex;
             justify-content: center;
             align-items: center;
-            min-height: 100vh; /* Changed to min-height for better mobile view */
+            min-height: 100vh;
             margin: 0;
-            padding: 20px; /* Added padding so it doesn't touch edges on small screens */
+            padding: 20px;
         }
 
         .contact-form {
             background-color: #ffffff;
-            padding: 40px 30px; /* Increased top/bottom padding slightly */
+            padding: 40px 30px;
             border-radius: 8px;
             box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
             width: 100%;
             max-width: 400px;
         }
 
-        /* --- NEW LOGO STYLES --- */
         .logo {
             display: block;
-            margin: 0 auto 25px auto; /* Center horizontally, margin bottom 25px */
-            max-width: 150px; /* Ensure it doesn't get too big */
+            margin: 0 auto 25px auto;
+            max-width: 150px;
             height: auto;
         }
 
@@ -56,14 +55,13 @@
         .form-group textarea {
             width: 100%;
             padding: 12px;
-            border: 1px solid #ddd; /* Slightly lighter border */
+            border: 1px solid #ddd;
             border-radius: 4px;
             box-sizing: border-box;
-            font-size: 16px; /* Better font size for inputs */
+            font-size: 16px;
             transition: border-color 0.3s;
         }
 
-        /* Add focus state for better accessibility */
         .form-group input:focus,
         .form-group textarea:focus {
             outline: none;
@@ -71,14 +69,14 @@
         }
 
         .form-group textarea {
-            height: 120px; /* Slightly taller textarea */
+            height: 120px;
             resize: vertical;
             font-family: inherit;
         }
 
         button {
             width: 100%;
-            padding: 15px; /* Larger button area */
+            padding: 15px;
             background-color: #007BFF;
             color: white;
             border: none;
@@ -102,6 +100,8 @@
         <h2>Get in Touch</h2>
         
         <form action="https://formspree.io/f/mzdpzwoe" method="POST">
+            
+            <input type="hidden" name="_next" value="https://solaro.green/">
             
             <div class="form-group">
                 <label for="email">Your Email Address</label>
