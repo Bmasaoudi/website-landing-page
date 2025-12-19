@@ -74,14 +74,6 @@
             transition: background 0.3s;
         }
         button:hover { background: #e67e22; }
-        
-        /* Message de statut (caché par défaut) */
-        #status-message {
-            text-align: center;
-            margin-top: 15px;
-            font-weight: bold;
-            display: none;
-        }
 
         footer { text-align: center; padding: 20px; font-size: 14px; color: #555; }
     </style>
@@ -99,8 +91,10 @@
             <h2>📝 Option 1 : Demandez à être rappelé</h2>
             <p>Remplissez le formulaire ci-dessous pour une étude gratuite.</p>
 
-            <form id="contact-form" action="https://formspree.io/f/mzdpzjyy" method="POST">
+            <form action="https://formspree.io/f/mzdpzjyy" method="POST">
                 
+                <input type="hidden" name="_next" value="https://solaro.green">
+
                 <label>Nom complet</label>
                 <input type="text" name="nom" placeholder="Votre nom" required>
 
@@ -116,8 +110,7 @@
                 <label>Vos disponibilités (30 min)</label>
                 <textarea name="message" rows="3" placeholder="Indiquez vos préférences pour un appel..."></textarea>
 
-                <button type="submit" id="submit-btn">Envoyer la demande →</button>
-                <p id="status-message"></p>
+                <button type="submit">Envoyer la demande →</button>
             </form>
         </div>
 
@@ -142,44 +135,6 @@
             new google.maps.places.Autocomplete(input);
         }
       }
-    </script>
-    
-    <script>
-        var form = document.getElementById("contact-form");
-        var statusMsg = document.getElementById("status-message");
-        var btn = document.getElementById("submit-btn");
-
-        async function handleSubmit(event) {
-            event.preventDefault(); // Stop standard redirect
-            
-            // Change button text
-            btn.innerHTML = "Envoi en cours..."; 
-            
-            var data = new FormData(event.target);
-            fetch(event.target.action, {
-                method: form.method,
-                body: data,
-                headers: {
-                    'Accept': 'application/json'
-                }
-            }).then(response => {
-                if (response.ok) {
-                    // SUCCESS! Force the redirect now:
-                    window.location.href = "https://solaro.green";
-                } else {
-                    statusMsg.style.color = "red";
-                    statusMsg.innerHTML = "Erreur lors de l'envoi. Veuillez réessayer.";
-                    statusMsg.style.display = "block";
-                    btn.innerHTML = "Envoyer la demande →";
-                }
-            }).catch(error => {
-                statusMsg.style.color = "red";
-                statusMsg.innerHTML = "Erreur de connexion.";
-                statusMsg.style.display = "block";
-                btn.innerHTML = "Envoyer la demande →";
-            });
-        }
-        form.addEventListener("submit", handleSubmit);
     </script>
 
     <script 
