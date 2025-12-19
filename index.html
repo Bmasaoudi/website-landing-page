@@ -27,7 +27,7 @@
         /* CONTENEUR PRINCIPAL */
         .container { max-width: 800px; margin: 30px auto 50px; padding: 0 20px; }
 
-        /* CARTES SOMBRES (Style de votre image) */
+        /* CARTES SOMBRES */
         .card { 
             background: #1e2a38; /* Bleu nuit pour les cartes */
             border-radius: 12px; 
@@ -131,16 +131,17 @@
         var input = document.getElementById('address-input');
         if (input) {
             new google.maps.places.Autocomplete(input);
-            console.log("Maps loaded successfully");
+            console.log("Google Maps loaded successfully");
         } else {
-            console.error("Could not find input box");
+            console.error("Error: Input box not found");
         }
       }
     </script>
 
     <script 
-      src="https://maps.googleapis.com/maps/api/js?key=PASTE_YOUR_NEW_KEY_HERE&libraries=places&callback=initAutocomplete" 
+      src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCI5Ycv1SS_YrpkUPdX5CpdBQQr7uQIt9I&libraries=places&callback=initAutocomplete" 
       async defer>
     </script>
+
 </body>
 </html>
