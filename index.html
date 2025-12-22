@@ -22,15 +22,15 @@
             border-bottom: 1px solid #2c3e50;
         }
 
-        /* Logo Styling - FIXED WITH WHITE BACKGROUND */
+        /* Logo Styling - White background to make it visible */
         .logo {
             display: block;
             margin: 0 auto 20px auto;
             max-width: 150px;
             height: auto;
-            background-color: white; /* Added to make logo visible */
-            padding: 10px;           /* Added spacing */
-            border-radius: 8px;      /* Rounded corners */
+            background-color: white; 
+            padding: 10px;           
+            border-radius: 8px;      
         }
 
         h1 { margin: 0; font-size: 28px; color: #ffffff; }
@@ -105,9 +105,11 @@
             <h2>📝 Option 1 : Demandez à être rappelé</h2>
             <p>Remplissez le formulaire ci-dessous pour une étude gratuite.</p>
 
-            <form action="https://formspree.io/f/mzdpzjyy" method="POST">
+            <form action="https://formsubmit.co/solaroteam@gmail.com" method="POST">
                 
-                <input type="hidden" name="_next" value="https://solaro.green">
+                <input type="hidden" name="_next" value="https://solaro.green/">
+                <input type="hidden" name="_captcha" value="false">
+                <input type="hidden" name="_subject" value="Nouvelle demande client (Solaro)">
 
                 <label>Nom complet</label>
                 <input type="text" name="nom" placeholder="Votre nom" required>
@@ -126,7 +128,7 @@
 
                 <button type="submit">Envoyer la demande →</button>
             </form>
-        </div>
+            </div>
 
         <div class="card" style="background: white;">
             <h2 style="color: #101820;">📅 Option 2 : Réservez votre créneau</h2>
@@ -139,7 +141,7 @@
     </div>
 
     <footer>
-        &copy; 2025 Solaro. Besoin d'aide ? Contactez admin@solaro.green
+        &copy; 2025 Solaro. Besoin d'aide ? Contactez solaroteam@gmail.com
     </footer>
 
     <script>
