@@ -22,7 +22,7 @@
             border-bottom: 1px solid #2c3e50;
         }
 
-        /* Logo Styling - White background to make it visible */
+        /* Logo Styling */
         .logo {
             display: block;
             margin: 0 auto 20px auto;
@@ -94,16 +94,23 @@
 
     <header>
         <img src="Solaro_logo.png" alt="Solaro Logo" class="logo">
-        
         <h1>Votre projet solaire commence ici</h1>
         <p class="subtitle">Réservez un créneau ou contactez-nous directement</p>
     </header>
 
     <div class="container">
 
+        <div class="card" style="background: white;">
+            <h2 style="color: #101820;">📅 Option 1 : Réservez votre créneau</h2>
+            <p style="color: #555;">Choisissez l'heure qui vous convient pour échanger avec un expert.</p>
+            
+            <div class="calendly-inline-widget" data-url="https://calendly.com/solaroteam/30min" style="min-width:320px;height:700px;"></div>
+            <script type="text/javascript" src="https://assets.calendly.com/assets/external/widget.js" async></script>
+        </div>
+
         <div class="card">
-            <h2>📝 Option 1 : Demandez à être rappelé</h2>
-            <p>Remplissez le formulaire ci-dessous pour une étude gratuite.</p>
+            <h2>📝 Option 2 : Demandez à être rappelé</h2>
+            <p>Pas de créneau disponible ? Laissez vos coordonnées, nous vous rappellerons.</p>
 
             <form action="https://formsubmit.co/solaroteam@gmail.com" method="POST">
                 
@@ -123,19 +130,8 @@
                 <label>Téléphone</label>
                 <input type="tel" name="telephone" placeholder="06 00 00 00 00" required>
 
-                <label>Vos disponibilités (30 min)</label>
-                <textarea name="message" rows="3" placeholder="Indiquez vos préférences pour un appel..."></textarea>
-
                 <button type="submit">Envoyer la demande →</button>
             </form>
-            </div>
-
-        <div class="card" style="background: white;">
-            <h2 style="color: #101820;">📅 Option 2 : Réservez votre créneau</h2>
-            <p style="color: #555;">Choisissez l'heure qui vous convient pour échanger avec un expert.</p>
-            
-            <div class="calendly-inline-widget" data-url="https://calendly.com/solaroteam/30min" style="min-width:320px;height:700px;"></div>
-            <script type="text/javascript" src="https://assets.calendly.com/assets/external/widget.js" async></script>
         </div>
 
     </div>
