@@ -5,7 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Solaro - Étude & Réservation</title>
     <style>
-        /* --- DESIGN & COLORS (This is what was missing!) --- */
+        /* --- DESIGN & COLORS --- */
         body { 
             margin: 0; 
             padding: 0; 
@@ -22,22 +22,15 @@
             border-bottom: 1px solid #2c3e50;
         }
 
-   /* Logo Styling */
-.logo {
-    display: block;
-    margin: 0 auto 20px auto;
-    max-width: 150px;
-    height: auto;
-    
-    /* This makes the logo visible: */
-    background-color: white; 
-    padding: 10px;           
-    border-radius: 8px;      
-}
+        /* Logo Styling - FIXED WITH WHITE BACKGROUND */
+        .logo {
             display: block;
             margin: 0 auto 20px auto;
             max-width: 150px;
             height: auto;
+            background-color: white; /* Added to make logo visible */
+            padding: 10px;           /* Added spacing */
+            border-radius: 8px;      /* Rounded corners */
         }
 
         h1 { margin: 0; font-size: 28px; color: #ffffff; }
@@ -139,7 +132,7 @@
             <h2 style="color: #101820;">📅 Option 2 : Réservez votre créneau</h2>
             <p style="color: #555;">Choisissez l'heure qui vous convient pour échanger avec un expert.</p>
             
-            <div class="calendly-inline-widget" data-url="https://calendly.com/bm-mlg-elec/30min" style="min-width:320px;height:700px;"></div>
+            <div class="calendly-inline-widget" data-url="https://calendly.com/solaroteam/30min" style="min-width:320px;height:700px;"></div>
             <script type="text/javascript" src="https://assets.calendly.com/assets/external/widget.js" async></script>
         </div>
 
@@ -164,4 +157,3 @@
 
 </body>
 </html>
-
