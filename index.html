@@ -109,3 +109,49 @@
         </div>
 
         <div class="card">
+            <h2>📝 Option 2 : Demandez à être rappelé</h2>
+            <p>Pas de créneau disponible ? Laissez vos coordonnées, nous vous rappellerons.</p>
+
+            <form action="https://formsubmit.co/solaroteam@gmail.com" method="POST">
+                
+                <input type="hidden" name="_next" value="https://solaro.green/">
+                <input type="hidden" name="_captcha" value="false">
+                <input type="hidden" name="_subject" value="Nouvelle demande client (Solaro)">
+
+                <label>Nom complet</label>
+                <input type="text" name="nom" placeholder="Votre nom" required>
+
+                <label>Adresse du projet</label>
+                <input id="address-input" type="text" name="adresse" placeholder="Adresse complète" required>
+
+                <label>Email</label>
+                <input type="email" name="email" placeholder="votre@email.com" required>
+
+                <label>Téléphone</label>
+                <input type="tel" name="telephone" placeholder="06 00 00 00 00" required>
+
+                <button type="submit">Envoyer la demande →</button>
+            </form>
+        </div>
+
+    </div>
+
+    <footer>
+        &copy; 2025 Solaro. Besoin d'aide ? Contactez solaroteam@gmail.com
+    </footer>
+
+    <script>
+      function initAutocomplete() {
+        var input = document.getElementById('address-input');
+        if (input) {
+            new google.maps.places.Autocomplete(input);
+        }
+      }
+    </script>
+    <script 
+      src="https://maps.googleapis.com/maps/api/js?key=AIzaSyAOZNfrXUN3NbW3An1izZO77WD3vQRmnEs&libraries=places&callback=initAutocomplete" 
+      async defer>
+    </script>
+
+</body>
+</html>
