@@ -2,23 +2,21 @@
 <html lang="fr">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
     <title>Solaro | Étude Solaire Gratuite</title>
     
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700;800&display=swap" rel="stylesheet">
-    
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
 
     <style>
-        /* --- GLOBAL VARIABLES (DARK THEME - SOLARO STYLE) --- */
+        /* --- GLOBAL VARIABLES (DARK THEME) --- */
         :root {
             --primary-color: #2ecc71; /* Solaro Green */
             --primary-hover: #27ae60;
-            --accent-color: #f97316;  /* Orange for checks */
+            --accent-color: #f97316;  /* Orange */
             
-            /* DARK THEME COLORS */
-            --bg-main: #0f172a;       /* Deep Night Blue (Background) */
-            --card-bg: #1e293b;       /* Slate 800 (Cards) */
+            --bg-main: #0f172a;       /* Deep Night Blue */
+            --card-bg: #1e293b;       /* Slate 800 */
             --input-bg: #0f172a;      /* Darker input background */
             
             --text-main: #ffffff;     /* White text */
@@ -37,6 +35,7 @@
             display: flex;
             flex-direction: column;
             align-items: center;
+            -webkit-font-smoothing: antialiased; /* Smoother fonts on iOS */
         }
 
         /* --- NAVIGATION --- */
@@ -48,19 +47,17 @@
             align-items: center;
             box-sizing: border-box;
             max-width: 1200px;
-            background: transparent;
         }
         
-        /* LOGO STYLING - With White Box like the image */
         .logo-container {
             background-color: white;
-            padding: 8px 20px;
+            padding: 8px 16px;
             border-radius: 12px;
             display: inline-block;
         }
 
         .nav-logo-img {
-            height: 40px; /* Adjusted slightly for the box */
+            height: 35px;
             width: auto;
             display: block;
         }
@@ -81,7 +78,7 @@
         .container {
             width: 100%;
             max-width: 900px;
-            margin: 40px auto;
+            margin: 20px auto;
             padding: 0 20px;
             box-sizing: border-box;
         }
@@ -89,7 +86,7 @@
         /* --- HEADER --- */
         header {
             text-align: center;
-            margin-bottom: 50px;
+            margin-bottom: 40px;
         }
         
         header h1 {
@@ -97,76 +94,74 @@
             margin: 0 0 15px 0;
             font-weight: 800;
             color: var(--text-main);
-            line-height: 1.2;
+            line-height: 1.1;
         }
         header p {
             color: var(--text-muted);
-            font-size: 1.2rem;
+            font-size: 1.15rem;
             max-width: 600px;
-            margin: 0 auto 30px auto;
+            margin: 0 auto 25px auto;
             line-height: 1.5;
         }
 
-        /* --- BADGES STYLE (Dark Mode) --- */
+        /* --- BADGES (Responsive) --- */
         .badges-container {
             display: flex;
             justify-content: center;
-            gap: 15px;
+            gap: 12px;
             flex-wrap: wrap;
         }
 
         .badge {
             background-color: var(--card-bg);
             border: 1px solid var(--border-color);
-            padding: 10px 20px;
+            padding: 8px 16px;
             border-radius: 50px;
-            font-size: 0.95rem;
+            font-size: 0.9rem;
             font-weight: 500;
             color: var(--text-main);
             display: flex;
             align-items: center;
-            gap: 10px;
-            transition: border-color 0.2s;
-        }
-
-        .badge:hover {
-            border-color: var(--text-muted);
+            gap: 8px;
+            white-space: nowrap; /* Prevents breaking inside badge */
         }
 
         .badge i {
-            color: var(--accent-color); /* Orange checkmarks */
-            font-weight: bold;
+            color: var(--accent-color);
+            font-size: 0.9rem;
         }
 
-        /* --- CARD DESIGN (Dark Mode) --- */
+        /* --- CARD DESIGN --- */
         .card {
             background: var(--card-bg);
             border: 1px solid var(--border-color);
             border-radius: 16px;
             padding: 40px;
-            margin-bottom: 40px;
-            box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.3), 0 2px 4px -1px rgba(0, 0, 0, 0.2);
+            margin-bottom: 30px;
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.2);
+            width: 100%;
+            box-sizing: border-box;
         }
 
         .card-header {
-            margin-bottom: 30px;
+            margin-bottom: 25px;
             border-bottom: 1px solid var(--border-color);
-            padding-bottom: 20px;
+            padding-bottom: 15px;
         }
         .card-header h2 {
-            font-size: 1.5rem;
-            margin: 0 0 8px 0;
+            font-size: 1.4rem;
+            margin: 0 0 6px 0;
             color: var(--text-main);
             display: flex;
             align-items: center;
-            gap: 12px;
+            gap: 10px;
             font-weight: 700;
         }
-        .card-header h2 i { color: var(--primary-color); font-size: 1.3rem; }
+        .card-header h2 i { color: var(--primary-color); font-size: 1.2rem; }
         .card-header p {
             color: var(--text-muted);
             margin: 0;
-            font-size: 1rem;
+            font-size: 0.95rem;
         }
 
         /* --- FORM STYLES --- */
@@ -174,9 +169,6 @@
             display: grid;
             grid-template-columns: 1fr 1fr;
             gap: 20px;
-        }
-        @media (max-width: 768px) {
-            .form-grid { grid-template-columns: 1fr; }
         }
 
         .form-group { margin-bottom: 5px; }
@@ -186,7 +178,7 @@
             margin-bottom: 8px;
             font-size: 0.9rem;
             font-weight: 600;
-            color: var(--text-muted); /* Softer label color */
+            color: var(--text-muted);
         }
 
         .input-wrapper { position: relative; }
@@ -202,24 +194,25 @@
         input, textarea {
             width: 100%;
             padding: 14px 14px 14px 45px;
-            background-color: var(--input-bg); /* Dark Input */
+            background-color: var(--input-bg);
             border: 1px solid var(--border-color);
             border-radius: 8px;
             color: white;
-            font-size: 1rem;
+            font-size: 16px; /* 16px prevents iOS zoom on focus */
             font-family: 'Inter', sans-serif;
             transition: all 0.3s ease;
             box-sizing: border-box;
+            appearance: none; /* Removes native styling */
         }
         
-        input:focus, textarea:focus {
+        input:focus {
             outline: none;
             border-color: var(--primary-color);
             box-shadow: 0 0 0 2px rgba(46, 204, 113, 0.2);
         }
         input::placeholder { color: #64748b; }
 
-        /* Google Autocomplete Styling (Dark Mode) */
+        /* --- GOOGLE MAPS AUTOCOMPLETE --- */
         .pac-container {
             background-color: var(--card-bg);
             border: 1px solid var(--border-color);
@@ -232,16 +225,12 @@
             border-top: 1px solid var(--border-color);
             color: var(--text-muted);
             padding: 12px;
-            font-size: 0.95rem;
+            font-size: 1rem;
         }
-        .pac-item:hover {
-            background-color: var(--input-bg);
-        }
-        .pac-item-query {
-            color: var(--text-main);
-            font-weight: 600;
-        }
+        .pac-item:hover { background-color: var(--input-bg); }
+        .pac-item-query { color: var(--text-main); font-weight: 600; }
 
+        /* --- BUTTON --- */
         .btn-submit {
             grid-column: span 2;
             margin-top: 10px;
@@ -254,6 +243,7 @@
             border-radius: 8px;
             cursor: pointer;
             transition: transform 0.2s, box-shadow 0.2s;
+            width: 100%; /* Full width */
         }
         .btn-submit:hover {
             transform: translateY(-2px);
@@ -262,10 +252,52 @@
 
         footer {
             margin-top: auto;
-            padding: 40px;
+            padding: 40px 20px;
             text-align: center;
             color: var(--text-muted);
-            font-size: 0.9rem;
+            font-size: 0.85rem;
+        }
+
+        /* --- MOBILE SPECIFIC STYLES --- */
+        @media (max-width: 640px) {
+            nav {
+                flex-direction: column;
+                gap: 15px;
+                padding: 20px;
+            }
+
+            .container {
+                padding: 0 16px;
+                margin-top: 10px;
+            }
+
+            header h1 {
+                font-size: 1.8rem; /* Smaller title on mobile */
+                padding: 0 10px;
+            }
+            
+            header p {
+                font-size: 1rem;
+                padding: 0 10px;
+            }
+
+            .card {
+                padding: 25px 20px; /* Reduced padding inside cards */
+            }
+
+            .form-grid {
+                grid-template-columns: 1fr; /* Stack inputs vertically */
+                gap: 15px;
+            }
+
+            .btn-submit {
+                grid-column: span 1; /* Reset grid span */
+            }
+
+            .badge {
+                padding: 6px 12px;
+                font-size: 0.8rem; /* Slightly smaller badges */
+            }
         }
     </style>
 </head>
@@ -304,11 +336,11 @@
 
         <div class="card">
             <div class="card-header">
-                <h2><i class="far fa-calendar-check"></i> Option 1 : Réservez un créneau vidéo</h2>
-                <p>Échangez directement avec un expert Solaro pendant 30 minutes.</p>
+                <h2><i class="far fa-calendar-check"></i> Option 1 : Vidéo</h2>
+                <p>Échangez avec un expert (30 min).</p>
             </div>
             
-            <div style="width:100%;height:100%;overflow:scroll" id="my-cal-inline"></div>
+            <div style="width:100%; height:100%; min-height: 400px; overflow:scroll" id="my-cal-inline"></div>
             
             <script type="text/javascript">
               (function (C, A, L) { let p = function (a, ar) { a.q.push(ar); }; let d = C.document; C.Cal = C.Cal || function () { let cal = C.Cal; let ar = arguments; if (!cal.loaded) { cal.ns = {}; cal.q = cal.q || []; d.head.appendChild(d.createElement("script")).src = A; cal.loaded = true; } if (ar[0] === L) { const api = function () { p(api, arguments); }; const namespace = ar[1]; api.q = api.q || []; typeof namespace === "string" ? (cal.ns[namespace] = api) && p(api, ar) : p(cal, ar); return; } p(cal, ar); }; })(window, "https://app.cal.com/embed/embed.js", "init");
@@ -321,7 +353,6 @@
                 layout: "month_view"
               });
               
-              // THEME CHANGED TO DARK
               Cal.ns["30min"]("ui", {
                   "theme": "dark", 
                   "styles": { 
@@ -336,8 +367,8 @@
 
         <div class="card">
             <div class="card-header">
-                <h2><i class="far fa-envelope"></i> Option 2 : Demandez à être rappelé</h2>
-                <p>Laissez vos coordonnées, un expert vous recontactera rapidement.</p>
+                <h2><i class="far fa-envelope"></i> Option 2 : Rappel</h2>
+                <p>Laissez vos coordonnées, on vous rappelle.</p>
             </div>
             
             <form action="https://formsubmit.co/solaroteam@gmail.com" method="POST" class="form-grid">
@@ -371,10 +402,10 @@
                 </div>
 
                 <div class="form-group">
-                    <label>Adresse du projet (pour l'étude)</label>
+                    <label>Adresse du projet</label>
                     <div class="input-wrapper">
                         <i class="fas fa-map-marker-alt"></i>
-                        <input type="text" id="address-input" name="address" placeholder="Commencez à saisir votre adresse..." required>
+                        <input type="text" id="address-input" name="address" placeholder="Votre adresse..." required>
                     </div>
                 </div>
 
@@ -386,7 +417,7 @@
 
     </div>
 
-    <script src="https://maps.googleapis.com/maps/api/js?key=YOUR_GOOGLE_API_KEY_HERE&libraries=places&callback=initAutocomplete" async defer></script>
+    <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyAOZNfrXUN3NbW3An1izZO77WD3vQRmnEs&libraries=places&callback=initAutocomplete" async defer></script>
     
     <script>
         function initAutocomplete() {
