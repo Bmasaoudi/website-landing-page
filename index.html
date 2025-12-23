@@ -218,9 +218,7 @@
         </div>
     </header>
 
-    <div class="container">
-
-       <div class="card" style="max-width: 1000px; margin: 0 auto;">
+  <div class="card" style="max-width: 1000px; margin: 0 auto;">
             <div class="card-header">
                 <h2>📅 Option 1 : Réservez votre créneau</h2>
                 <p>Sélectionnez une date ci-dessous pour un échange direct.</p>
@@ -238,19 +236,23 @@
                 layout: "month_view"
               });
               
-              // DARK MODE + GREEN COLOR
+              // 👇 COLORS SECTION - EDIT HERE
               Cal.ns["30min"]("ui", {
                   "theme": "dark",
                   "styles": { 
                       "branding": { 
-                          "brandColor": "#2ecc71" 
-                      } 
+                          "brandColor": "#2ecc71" // The Green Buttons
+                      },
+                      "body": {
+                          "background": "#111827", // <--- CHANGE THIS for the Calendar Background (Navy)
+                          "color": "#ffffff"        // <--- CHANGE THIS for the Text Color
+                      }
                   },
                   "hideEventTypeDetails": false,
                   "layout": "month_view"
               });
             </script>
-            </div>
+        </div>
             </div>
         <div class="card">
             <div class="card-header">
@@ -316,6 +318,7 @@
 
 </body>
 </html>
+
 
 
 
