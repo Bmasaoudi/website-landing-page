@@ -249,16 +249,16 @@
         <div class="card">
             <div class="card-header">
                 <h2><i class="far fa-envelope"></i> Option 2 : Être rappelé</h2>
-                <p>Vous ne trouvez pas de créneau ? Envoyez-nous un email directement.</p>
+                <p>Vous ne trouvez pas de créneau ? Laissez vos coordonnées, nous vous rappelons.</p>
             </div>
             
-            <form action="mailto:solaroteam@gmail.com" method="post" enctype="text/plain" class="form-grid">
+            <form id="contactForm" class="form-grid" onsubmit="sendMail(event)">
                 
                 <div class="form-group">
                     <label>Nom Complet</label>
                     <div class="input-wrapper">
                         <i class="fas fa-user"></i>
-                        <input type="text" name="Nom" placeholder="Jean Dupont" required>
+                        <input type="text" id="nom" name="name" placeholder="Jean Dupont" required autocomplete="name">
                     </div>
                 </div>
                 
@@ -266,7 +266,7 @@
                     <label>Email</label>
                     <div class="input-wrapper">
                         <i class="fas fa-envelope"></i>
-                        <input type="email" name="Email" placeholder="jean@exemple.com" required>
+                        <input type="email" id="email" name="email" placeholder="jean@exemple.com" required autocomplete="email">
                     </div>
                 </div>
 
@@ -274,7 +274,7 @@
                     <label>Téléphone</label>
                     <div class="input-wrapper">
                         <i class="fas fa-phone-alt"></i>
-                        <input type="tel" name="Telephone" placeholder="06 12 34 56 78" required>
+                        <input type="tel" id="phone" name="phone" placeholder="06 12 34 56 78" required autocomplete="tel">
                     </div>
                 </div>
 
@@ -282,7 +282,7 @@
                     <label>Code Postal / Ville</label>
                     <div class="input-wrapper">
                         <i class="fas fa-map-marker-alt"></i>
-                        <input type="text" name="Adresse" placeholder="75001 Paris" required>
+                        <input type="text" id="address" name="address" placeholder="75001 Paris" required autocomplete="street-address">
                     </div>
                 </div>
 
@@ -293,6 +293,31 @@
         </div>
 
     </div>
+
+    <script>
+        function sendMail(e) {
+            e.preventDefault(); // Stops the "Not Secure" form submission
+            
+            // 1. Get values
+            var nom = document.getElementById('nom').value;
+            var email = document.getElementById('email').value;
+            var phone = document.getElementById('phone').value;
+            var address = document.getElementById('address').value;
+
+            // 2. Create the email content
+            var subject = "Demande de Rappel - " + nom;
+            var body = "Bonjour Solaro,\n\nJe souhaite être rappelé pour mon projet solaire.\n\n" +
+                       "📋 MES COORDONNÉES :\n" +
+                       "- Nom : " + nom + "\n" +
+                       "- Email : " + email + "\n" +
+                       "- Téléphone : " + phone + "\n" +
+                       "- Adresse : " + address + "\n\n" +
+                       "Merci de me recontacter.";
+
+            // 3. Open the user's email app
+            window.location.href = "mailto:solaroteam@gmail.com?subject=" + encodeURIComponent(subject) + "&body=" + encodeURIComponent(body);
+        }
+    </script>
 
     <footer>
         &copy; 2025 Solaro France. Tous droits réservés.
