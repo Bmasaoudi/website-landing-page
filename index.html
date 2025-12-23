@@ -220,7 +220,7 @@
 
     <div class="container">
 
-        <div class="card white-theme">
+        <div class="card">
             <div class="card-header">
                 <h2>📅 Option 1 : Réservez votre créneau</h2>
                 <p>Sélectionnez une date ci-dessous pour un échange direct.</p>
@@ -234,12 +234,23 @@
               
               Cal.ns["30min"]("inline", {
                 elementOrSelector:"#my-cal-inline",
-                calLink: "solaro-boabja/30min", 
+                calLink: "solaro-boabja/30min",
                 layout: "month_view"
               });
               
-              Cal.ns["30min"]("ui", {"styles":{"branding":{"brandColor":"#f39c12"}},"hideEventTypeDetails":false,"layout":"month_view"});
+              // CUSTOM THEME SETTINGS 👇
+              Cal.ns["30min"]("ui", {
+                  "theme": "dark",   // <--- Makes the calendar Dark
+                  "styles": { 
+                      "branding": { 
+                          "brandColor": "#2ecc71" // <--- This is the SOLARO GREEN. Change if needed.
+                      } 
+                  },
+                  "hideEventTypeDetails": false,
+                  "layout": "month_view"
+              });
             </script>
+            </div>
             </div>
         <div class="card">
             <div class="card-header">
@@ -305,4 +316,5 @@
 
 </body>
 </html>
+
 
