@@ -12,9 +12,9 @@
     <style>
         /* --- GLOBAL VARIABLES --- */
         :root {
-            --primary-color: #2ecc71; /* Solar Green */
+            --primary-color: #2ecc71; 
             --primary-hover: #27ae60;
-            --bg-dark: #0f172a;       /* Deep Navy */
+            --bg-dark: #0f172a;       
             --text-main: #ffffff;
             --text-muted: #94a3b8;
             --border-color: #334155;
@@ -150,6 +150,7 @@
             top: 50%;
             transform: translateY(-50%);
             color: #64748b;
+            z-index: 10;
         }
 
         input, textarea {
@@ -169,6 +170,25 @@
             outline: none;
             border-color: var(--primary-color);
             box-shadow: 0 0 0 3px rgba(46, 204, 113, 0.15);
+        }
+
+        /* Google Autocomplete Dropdown Styling */
+        .pac-container {
+            background-color: #1e293b;
+            border: 1px solid #334155;
+            font-family: 'Inter', sans-serif;
+        }
+        .pac-item {
+            border-top: 1px solid #334155;
+            color: #cbd5e1;
+            padding: 10px;
+        }
+        .pac-item:hover {
+            background-color: #334155;
+        }
+        .pac-item-query {
+            color: #ffffff;
+            font-weight: bold;
         }
 
         .btn-submit {
@@ -254,15 +274,15 @@
             
             <form action="https://formsubmit.co/solaroteam@gmail.com" method="POST" class="form-grid">
                 
+                <input type="hidden" name="_next" value="https://solaro.green">
                 <input type="hidden" name="_subject" value="Nouveau Lead Solaro !">
-                <input type="hidden" name="_template" value="table">
                 <input type="hidden" name="_captcha" value="false">
 
                 <div class="form-group">
                     <label>Nom Complet</label>
                     <div class="input-wrapper">
                         <i class="fas fa-user"></i>
-                        <input type="text" name="name" placeholder="Jean Dupont" required autocomplete="name">
+                        <input type="text" name="name" placeholder="Jean Dupont" required>
                     </div>
                 </div>
                 
@@ -270,7 +290,7 @@
                     <label>Email</label>
                     <div class="input-wrapper">
                         <i class="fas fa-envelope"></i>
-                        <input type="email" name="email" placeholder="jean@exemple.com" required autocomplete="email">
+                        <input type="email" name="email" placeholder="jean@exemple.com" required>
                     </div>
                 </div>
 
@@ -278,7 +298,7 @@
                     <label>Téléphone</label>
                     <div class="input-wrapper">
                         <i class="fas fa-phone-alt"></i>
-                        <input type="tel" name="phone" placeholder="06 12 34 56 78" required autocomplete="tel">
+                        <input type="tel" name="phone" placeholder="06 12 34 56 78" required>
                     </div>
                 </div>
 
@@ -286,7 +306,7 @@
                     <label>Code Postal / Ville</label>
                     <div class="input-wrapper">
                         <i class="fas fa-map-marker-alt"></i>
-                        <input type="text" name="address" placeholder="75001 Paris" required autocomplete="street-address">
+                        <input type="text" id="address-input" name="address" placeholder="Commencez à saisir..." required>
                     </div>
                 </div>
 
@@ -297,6 +317,17 @@
         </div>
 
     </div>
+
+    <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyAOZNfrXUN3NbW3An1izZO77WD3vQRmnEs&libraries=places&callback=initAutocomplete" async defer></script>
+    
+    <script>
+        function initAutocomplete() {
+            var input = document.getElementById('address-input');
+            var autocomplete = new google.maps.places.Autocomplete(input, {
+                componentRestrictions: { country: 'fr' } // Limit suggestions to France
+            });
+        }
+    </script>
 
     <footer>
         &copy; 2025 Solaro France. Tous droits réservés.
