@@ -10,24 +10,26 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
 
     <style>
-        /* --- GLOBAL VARIABLES (LIGHT THEME) --- */
+        /* --- GLOBAL VARIABLES (DARK THEME - SOLARO STYLE) --- */
         :root {
             --primary-color: #2ecc71; /* Solaro Green */
             --primary-hover: #27ae60;
-            --accent-color: #f97316;  /* Orange from the image for checks */
-            --bg-main: #f8fafc;       /* Light Gray/White Background */
-            --text-main: #1e293b;     /* Dark Navy Text for contrast */
-            --text-muted: #64748b;    /* Medium Gray text */
-            --border-color: #e2e8f0;  /* Light gray border */
-            --card-bg: rgba(255, 255, 255, 0.9); /* Clean white cards */
+            --accent-color: #f97316;  /* Orange for checks */
+            
+            /* DARK THEME COLORS */
+            --bg-main: #0f172a;       /* Deep Night Blue (Background) */
+            --card-bg: #1e293b;       /* Slate 800 (Cards) */
+            --input-bg: #0f172a;      /* Darker input background */
+            
+            --text-main: #ffffff;     /* White text */
+            --text-muted: #94a3b8;    /* Light Gray text */
+            --border-color: #334155;  /* Dark Blue/Gray border */
         }
 
         /* --- BASE STYLES --- */
         body {
             font-family: 'Inter', sans-serif;
             background-color: var(--bg-main);
-            /* Subtle light gradient instead of dark */
-            background-image: radial-gradient(circle at 50% 0%, #ffffff 0%, var(--bg-main) 70%);
             color: var(--text-main);
             margin: 0;
             padding: 0;
@@ -49,9 +51,16 @@
             background: transparent;
         }
         
-        /* LOGO STYLING */
+        /* LOGO STYLING - With White Box like the image */
+        .logo-container {
+            background-color: white;
+            padding: 8px 20px;
+            border-radius: 12px;
+            display: inline-block;
+        }
+
         .nav-logo-img {
-            height: 50px;
+            height: 40px; /* Adjusted slightly for the box */
             width: auto;
             display: block;
         }
@@ -66,7 +75,7 @@
             align-items: center;
             gap: 8px;
         }
-        .btn-back:hover { color: var(--primary-color); }
+        .btn-back:hover { color: white; }
 
         /* --- CONTAINER --- */
         .container {
@@ -77,21 +86,12 @@
             box-sizing: border-box;
         }
 
-        /* --- HEADER WITH NEW TITLES --- */
+        /* --- HEADER --- */
         header {
             text-align: center;
             margin-bottom: 50px;
         }
-        /* Hidden the kicker to match image cleaner look, or you can keep it */
-        .header-kicker {
-            color: var(--primary-color);
-            font-weight: 700;
-            text-transform: uppercase;
-            letter-spacing: 1px;
-            margin-bottom: 10px;
-            display: block;
-            font-size: 0.9rem;
-        }
+        
         header h1 {
             font-size: 2.8rem;
             margin: 0 0 15px 0;
@@ -103,11 +103,11 @@
             color: var(--text-muted);
             font-size: 1.2rem;
             max-width: 600px;
-            margin: 0 auto 30px auto; /* Added bottom margin for badges */
+            margin: 0 auto 30px auto;
             line-height: 1.5;
         }
 
-        /* --- NEW BADGES STYLE --- */
+        /* --- BADGES STYLE (Dark Mode) --- */
         .badges-container {
             display: flex;
             justify-content: center;
@@ -116,39 +116,36 @@
         }
 
         .badge {
-            background-color: white;
+            background-color: var(--card-bg);
             border: 1px solid var(--border-color);
             padding: 10px 20px;
             border-radius: 50px;
             font-size: 0.95rem;
-            font-weight: 600;
+            font-weight: 500;
             color: var(--text-main);
             display: flex;
             align-items: center;
-            gap: 8px;
-            box-shadow: 0 2px 5px rgba(0,0,0,0.03);
-            transition: transform 0.2s;
+            gap: 10px;
+            transition: border-color 0.2s;
         }
 
         .badge:hover {
-            transform: translateY(-2px);
-            border-color: var(--primary-color);
+            border-color: var(--text-muted);
         }
 
         .badge i {
-            color: var(--accent-color); /* Orange checkmarks like in the image */
+            color: var(--accent-color); /* Orange checkmarks */
+            font-weight: bold;
         }
 
-        /* --- CARD DESIGN (Light & Clean) --- */
+        /* --- CARD DESIGN (Dark Mode) --- */
         .card {
             background: var(--card-bg);
-            backdrop-filter: blur(10px);
-            border: 1px solid #ffffff; /* Subtle white border pop */
+            border: 1px solid var(--border-color);
             border-radius: 16px;
             padding: 40px;
             margin-bottom: 40px;
-            /* Softer shadow for light mode */
-            box-shadow: 0 10px 30px -5px rgba(0, 0, 0, 0.05), 0 4px 10px -5px rgba(0,0,0,0.02);
+            box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.3), 0 2px 4px -1px rgba(0, 0, 0, 0.2);
         }
 
         .card-header {
@@ -189,7 +186,7 @@
             margin-bottom: 8px;
             font-size: 0.9rem;
             font-weight: 600;
-            color: var(--text-main);
+            color: var(--text-muted); /* Softer label color */
         }
 
         .input-wrapper { position: relative; }
@@ -205,10 +202,10 @@
         input, textarea {
             width: 100%;
             padding: 14px 14px 14px 45px;
-            background-color: #ffffff; /* White inputs */
+            background-color: var(--input-bg); /* Dark Input */
             border: 1px solid var(--border-color);
             border-radius: 8px;
-            color: var(--text-main);
+            color: white;
             font-size: 1rem;
             font-family: 'Inter', sans-serif;
             transition: all 0.3s ease;
@@ -218,18 +215,18 @@
         input:focus, textarea:focus {
             outline: none;
             border-color: var(--primary-color);
-            box-shadow: 0 0 0 3px rgba(46, 204, 113, 0.15);
+            box-shadow: 0 0 0 2px rgba(46, 204, 113, 0.2);
         }
-        input::placeholder { color: #cbd5e1; }
+        input::placeholder { color: #64748b; }
 
-        /* Google Autocomplete Styling (Light Mode) */
+        /* Google Autocomplete Styling (Dark Mode) */
         .pac-container {
-            background-color: #ffffff;
+            background-color: var(--card-bg);
             border: 1px solid var(--border-color);
             font-family: 'Inter', sans-serif;
-            box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1);
             border-radius: 8px;
             margin-top: 5px;
+            box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.5);
         }
         .pac-item {
             border-top: 1px solid var(--border-color);
@@ -238,7 +235,7 @@
             font-size: 0.95rem;
         }
         .pac-item:hover {
-            background-color: #f1f5f9;
+            background-color: var(--input-bg);
         }
         .pac-item-query {
             color: var(--text-main);
@@ -257,7 +254,6 @@
             border-radius: 8px;
             cursor: pointer;
             transition: transform 0.2s, box-shadow 0.2s;
-            box-shadow: 0 4px 6px -1px rgba(46, 204, 113, 0.3);
         }
         .btn-submit:hover {
             transform: translateY(-2px);
@@ -277,7 +273,9 @@
 
     <nav>
         <a href="https://solaro.green">
-            <img src="Solaro_logo.png" alt="Solaro Logo" class="nav-logo-img">
+            <div class="logo-container">
+                <img src="Solaro_logo.png" alt="Solaro Logo" class="nav-logo-img">
+            </div>
         </a>
 
         <a href="https://solaro.green" class="btn-back">
@@ -323,9 +321,9 @@
                 layout: "month_view"
               });
               
-              // THEME SET TO LIGHT
+              // THEME CHANGED TO DARK
               Cal.ns["30min"]("ui", {
-                  "theme": "light", 
+                  "theme": "dark", 
                   "styles": { 
                       "branding": { "brandColor": "#2ecc71" },
                       "body": { "background": "transparent" }
