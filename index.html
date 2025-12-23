@@ -3,28 +3,30 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Solaro | Espace Rendez-vous</title>
+    <title>Solaro | Étude Solaire Gratuite</title>
     
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700;800&display=swap" rel="stylesheet">
     
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
 
     <style>
-        /* --- GLOBAL VARIABLES --- */
+        /* --- GLOBAL VARIABLES (LIGHT THEME) --- */
         :root {
-            --primary-color: #2ecc71; 
+            --primary-color: #2ecc71; /* Solaro Green */
             --primary-hover: #27ae60;
-            --bg-dark: #0f172a;       
-            --text-main: #ffffff;
-            --text-muted: #94a3b8;
-            --border-color: #334155;
+            --bg-main: #f8fafc;       /* Light Gray/White Background */
+            --text-main: #1e293b;     /* Dark Navy Text for contrast */
+            --text-muted: #64748b;    /* Medium Gray text */
+            --border-color: #e2e8f0;  /* Light gray border */
+            --card-bg: rgba(255, 255, 255, 0.9); /* Clean white cards */
         }
 
         /* --- BASE STYLES --- */
         body {
             font-family: 'Inter', sans-serif;
-            background-color: var(--bg-dark);
-            background-image: radial-gradient(circle at 50% 0%, #1e293b 0%, #0f172a 70%);
+            background-color: var(--bg-main);
+            /* Subtle light gradient instead of dark */
+            background-image: radial-gradient(circle at 50% 0%, #ffffff 0%, var(--bg-main) 70%);
             color: var(--text-main);
             margin: 0;
             padding: 0;
@@ -43,26 +45,27 @@
             align-items: center;
             box-sizing: border-box;
             max-width: 1200px;
+            background: transparent;
         }
         
-        .nav-logo {
-            font-weight: 700;
-            font-size: 1.5rem;
-            color: white;
-            letter-spacing: -0.5px;
+        /* LOGO STYLING */
+        .nav-logo-img {
+            height: 50px;
+            width: auto;
+            display: block;
         }
-        .nav-logo span { color: var(--primary-color); }
 
         .btn-back {
             color: var(--text-muted);
             text-decoration: none;
             font-size: 0.9rem;
+            font-weight: 600;
             transition: color 0.3s;
             display: flex;
             align-items: center;
             gap: 8px;
         }
-        .btn-back:hover { color: white; }
+        .btn-back:hover { color: var(--primary-color); }
 
         /* --- CONTAINER --- */
         .container {
@@ -73,34 +76,44 @@
             box-sizing: border-box;
         }
 
+        /* --- HEADER WITH NEW TITLES --- */
         header {
             text-align: center;
             margin-bottom: 50px;
         }
+        .header-kicker {
+            color: var(--primary-color);
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            margin-bottom: 10px;
+            display: block;
+        }
         header h1 {
             font-size: 2.8rem;
-            margin: 0 0 10px 0;
-            font-weight: 700;
-            background: linear-gradient(to right, #fff, #94a3b8);
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
+            margin: 0 0 15px 0;
+            font-weight: 800;
+            color: var(--text-main);
+            line-height: 1.2;
         }
         header p {
             color: var(--text-muted);
             font-size: 1.2rem;
             max-width: 600px;
             margin: 0 auto;
+            line-height: 1.5;
         }
 
-        /* --- CARD DESIGN --- */
+        /* --- CARD DESIGN (Light & Clean) --- */
         .card {
-            background: rgba(30, 41, 59, 0.7);
+            background: var(--card-bg);
             backdrop-filter: blur(10px);
-            border: 1px solid var(--border-color);
+            border: 1px solid #ffffff; /* Subtle white border pop */
             border-radius: 16px;
             padding: 40px;
             margin-bottom: 40px;
-            box-shadow: 0 10px 25px -5px rgba(0, 0, 0, 0.3);
+            /* Softer shadow for light mode */
+            box-shadow: 0 10px 30px -5px rgba(0, 0, 0, 0.05), 0 4px 10px -5px rgba(0,0,0,0.02);
         }
 
         .card-header {
@@ -111,16 +124,17 @@
         .card-header h2 {
             font-size: 1.5rem;
             margin: 0 0 8px 0;
-            color: white;
+            color: var(--text-main);
             display: flex;
             align-items: center;
             gap: 12px;
+            font-weight: 700;
         }
-        .card-header h2 i { color: var(--primary-color); font-size: 1.2rem; }
+        .card-header h2 i { color: var(--primary-color); font-size: 1.3rem; }
         .card-header p {
             color: var(--text-muted);
             margin: 0;
-            font-size: 0.95rem;
+            font-size: 1rem;
         }
 
         /* --- FORM STYLES --- */
@@ -140,7 +154,7 @@
             margin-bottom: 8px;
             font-size: 0.9rem;
             font-weight: 600;
-            color: var(--text-muted);
+            color: var(--text-main);
         }
 
         .input-wrapper { position: relative; }
@@ -149,17 +163,17 @@
             left: 14px;
             top: 50%;
             transform: translateY(-50%);
-            color: #64748b;
+            color: var(--text-muted);
             z-index: 10;
         }
 
         input, textarea {
             width: 100%;
             padding: 14px 14px 14px 45px;
-            background-color: #0f172a;
+            background-color: #ffffff; /* White inputs */
             border: 1px solid var(--border-color);
             border-radius: 8px;
-            color: white;
+            color: var(--text-main);
             font-size: 1rem;
             font-family: 'Inter', sans-serif;
             transition: all 0.3s ease;
@@ -171,24 +185,29 @@
             border-color: var(--primary-color);
             box-shadow: 0 0 0 3px rgba(46, 204, 113, 0.15);
         }
+        input::placeholder { color: #cbd5e1; }
 
-        /* Google Autocomplete Dropdown Styling */
+        /* Google Autocomplete Styling (Light Mode) */
         .pac-container {
-            background-color: #1e293b;
-            border: 1px solid #334155;
+            background-color: #ffffff;
+            border: 1px solid var(--border-color);
             font-family: 'Inter', sans-serif;
+            box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1);
+            border-radius: 8px;
+            margin-top: 5px;
         }
         .pac-item {
-            border-top: 1px solid #334155;
-            color: #cbd5e1;
-            padding: 10px;
+            border-top: 1px solid var(--border-color);
+            color: var(--text-muted);
+            padding: 12px;
+            font-size: 0.95rem;
         }
         .pac-item:hover {
-            background-color: #334155;
+            background-color: #f1f5f9;
         }
         .pac-item-query {
-            color: #ffffff;
-            font-weight: bold;
+            color: var(--text-main);
+            font-weight: 600;
         }
 
         .btn-submit {
@@ -199,7 +218,7 @@
             border: none;
             padding: 16px;
             font-size: 1.1rem;
-            font-weight: 600;
+            font-weight: 700;
             border-radius: 8px;
             cursor: pointer;
             transition: transform 0.2s, box-shadow 0.2s;
@@ -214,7 +233,7 @@
             margin-top: auto;
             padding: 40px;
             text-align: center;
-            color: #475569;
+            color: var(--text-muted);
             font-size: 0.9rem;
         }
     </style>
@@ -222,7 +241,10 @@
 <body>
 
     <nav>
-        <div class="nav-logo">Solaro<span>.</span></div>
+        <a href="https://solaro.green">
+            <img src="Solaro_logo.png" alt="Solaro Logo" class="nav-logo-img">
+        </a>
+
         <a href="https://solaro.green" class="btn-back">
             <i class="fas fa-arrow-left"></i> Retour au site
         </a>
@@ -231,14 +253,15 @@
     <div class="container">
         
         <header>
-            <h1>Discutons de votre projet</h1>
-            <p>Choisissez l'option qui vous convient le mieux pour une étude solaire personnalisée.</p>
+            <span class="header-kicker">Étude Solaire 100% Gratuite & Sans Engagement</span>
+            <h1>Démarrez votre projet solaire</h1>
+            <p>Choisissez l'option qui vous convient le mieux ci-dessous pour obtenir votre étude personnalisée.</p>
         </header>
 
         <div class="card">
             <div class="card-header">
-                <h2><i class="far fa-calendar-check"></i> Option 1 : Réservez un créneau</h2>
-                <p>Accès direct à l'agenda de nos experts pour un échange de 30 minutes.</p>
+                <h2><i class="far fa-calendar-check"></i> Option 1 : Réservez un créneau vidéo</h2>
+                <p>Échangez directement avec un expert Solaro pendant 30 minutes.</p>
             </div>
             
             <div style="width:100%;height:100%;overflow:scroll" id="my-cal-inline"></div>
@@ -254,11 +277,12 @@
                 layout: "month_view"
               });
               
+              // THEME SET TO LIGHT
               Cal.ns["30min"]("ui", {
-                  "theme": "dark",
+                  "theme": "light", 
                   "styles": { 
                       "branding": { "brandColor": "#2ecc71" },
-                      "body": { "background": "transparent", "color": "#ffffff" }
+                      "body": { "background": "transparent" }
                   },
                   "hideEventTypeDetails": false,
                   "layout": "month_view"
@@ -268,14 +292,14 @@
 
         <div class="card">
             <div class="card-header">
-                <h2><i class="far fa-envelope"></i> Option 2 : Être rappelé</h2>
-                <p>Vous ne trouvez pas de créneau ? Laissez vos coordonnées, nous vous rappelons.</p>
+                <h2><i class="far fa-envelope"></i> Option 2 : Demandez à être rappelé</h2>
+                <p>Laissez vos coordonnées, un expert vous recontactera rapidement.</p>
             </div>
             
             <form action="https://formsubmit.co/solaroteam@gmail.com" method="POST" class="form-grid">
                 
                 <input type="hidden" name="_next" value="https://solaro.green">
-                <input type="hidden" name="_subject" value="Nouveau Lead Solaro !">
+                <input type="hidden" name="_subject" value="Nouvelle demande d'Étude Gratuite !">
                 <input type="hidden" name="_captcha" value="false">
 
                 <div class="form-group">
@@ -303,15 +327,15 @@
                 </div>
 
                 <div class="form-group">
-                    <label>Code Postal / Ville</label>
+                    <label>Adresse du projet (pour l'étude)</label>
                     <div class="input-wrapper">
                         <i class="fas fa-map-marker-alt"></i>
-                        <input type="text" id="address-input" name="address" placeholder="Commencez à saisir..." required>
+                        <input type="text" id="address-input" name="address" placeholder="Commencez à saisir votre adresse..." required>
                     </div>
                 </div>
 
                 <button type="submit" class="btn-submit">
-                    Envoyer ma demande <i class="fas fa-paper-plane" style="margin-left:8px;"></i>
+                    Obtenir mon étude gratuite <i class="fas fa-arrow-right" style="margin-left:8px;"></i>
                 </button>
             </form>
         </div>
@@ -324,7 +348,7 @@
         function initAutocomplete() {
             var input = document.getElementById('address-input');
             var autocomplete = new google.maps.places.Autocomplete(input, {
-                componentRestrictions: { country: 'fr' } // Limit suggestions to France
+                componentRestrictions: { country: 'fr' }
             });
         }
     </script>
