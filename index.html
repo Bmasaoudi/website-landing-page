@@ -14,6 +14,7 @@
         :root {
             --primary-color: #2ecc71; /* Solaro Green */
             --primary-hover: #27ae60;
+            --accent-color: #f97316;  /* Orange from the image for checks */
             --bg-main: #f8fafc;       /* Light Gray/White Background */
             --text-main: #1e293b;     /* Dark Navy Text for contrast */
             --text-muted: #64748b;    /* Medium Gray text */
@@ -81,6 +82,7 @@
             text-align: center;
             margin-bottom: 50px;
         }
+        /* Hidden the kicker to match image cleaner look, or you can keep it */
         .header-kicker {
             color: var(--primary-color);
             font-weight: 700;
@@ -88,6 +90,7 @@
             letter-spacing: 1px;
             margin-bottom: 10px;
             display: block;
+            font-size: 0.9rem;
         }
         header h1 {
             font-size: 2.8rem;
@@ -100,8 +103,40 @@
             color: var(--text-muted);
             font-size: 1.2rem;
             max-width: 600px;
-            margin: 0 auto;
+            margin: 0 auto 30px auto; /* Added bottom margin for badges */
             line-height: 1.5;
+        }
+
+        /* --- NEW BADGES STYLE --- */
+        .badges-container {
+            display: flex;
+            justify-content: center;
+            gap: 15px;
+            flex-wrap: wrap;
+        }
+
+        .badge {
+            background-color: white;
+            border: 1px solid var(--border-color);
+            padding: 10px 20px;
+            border-radius: 50px;
+            font-size: 0.95rem;
+            font-weight: 600;
+            color: var(--text-main);
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.03);
+            transition: transform 0.2s;
+        }
+
+        .badge:hover {
+            transform: translateY(-2px);
+            border-color: var(--primary-color);
+        }
+
+        .badge i {
+            color: var(--accent-color); /* Orange checkmarks like in the image */
         }
 
         /* --- CARD DESIGN (Light & Clean) --- */
@@ -253,9 +288,20 @@
     <div class="container">
         
         <header>
-            <span class="header-kicker">Étude Solaire 100% Gratuite & Sans Engagement</span>
-            <h1>Démarrez votre projet solaire</h1>
-            <p>Choisissez l'option qui vous convient le mieux ci-dessous pour obtenir votre étude personnalisée.</p>
+            <h1>Votre projet solaire commence ici</h1>
+            <p>Obtenez une étude de rentabilité ou parlez à un expert certifié.</p>
+
+            <div class="badges-container">
+                <div class="badge">
+                    <i class="fas fa-check"></i> Étude 100% Gratuite
+                </div>
+                <div class="badge">
+                    <i class="fas fa-check"></i> Installateurs RGE
+                </div>
+                <div class="badge">
+                    <i class="fas fa-check"></i> +500 Projets réalisés
+                </div>
+            </div>
         </header>
 
         <div class="card">
@@ -342,7 +388,7 @@
 
     </div>
 
-    <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyAOZNfrXUN3NbW3An1izZO77WD3vQRmnEs&libraries=places&callback=initAutocomplete" async defer></script>
+    <script src="https://maps.googleapis.com/maps/api/js?key=YOUR_GOOGLE_API_KEY_HERE&libraries=places&callback=initAutocomplete" async defer></script>
     
     <script>
         function initAutocomplete() {
