@@ -220,7 +220,7 @@
 
     <div class="container">
 
-        <div class="card">
+       <div class="card" style="max-width: 1000px; margin: 0 auto;">
             <div class="card-header">
                 <h2>📅 Option 1 : Réservez votre créneau</h2>
                 <p>Sélectionnez une date ci-dessous pour un échange direct.</p>
@@ -238,12 +238,12 @@
                 layout: "month_view"
               });
               
-              // CUSTOM THEME SETTINGS 👇
+              // DARK MODE + GREEN COLOR
               Cal.ns["30min"]("ui", {
-                  "theme": "dark",   // <--- Makes the calendar Dark
+                  "theme": "dark",
                   "styles": { 
                       "branding": { 
-                          "brandColor": "#2ecc71" // <--- This is the SOLARO GREEN. Change if needed.
+                          "brandColor": "#2ecc71" 
                       } 
                   },
                   "hideEventTypeDetails": false,
@@ -316,5 +316,6 @@
 
 </body>
 </html>
+
 
 
