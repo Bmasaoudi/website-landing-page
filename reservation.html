@@ -1,0 +1,277 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Solaro - L'Expertise Solaire Nouvelle Génération</title>
+    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;600;800&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --primary: #022c22;
+            --secondary: #064e3b;
+            --accent: #34d399;
+            --light: #ecfdf5;
+            --white: #ffffff;
+            --text-gray: #475569;
+            --solplanet: #10b981; --huawei: #ef4444; --sigen: #8b5cf6; --sungrow: #f97316; --solax: #3b82f6;
+        }
+        html { scroll-behavior: smooth; }
+        body {
+            font-family: 'Outfit', sans-serif;
+            background-color: #f8fafc;
+            color: var(--primary);
+            margin: 0;
+            padding: 0;
+            overflow-x: hidden;
+        }
+        
+        /* NAV */
+        nav {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 20px 5%;
+            background: rgba(255, 255, 255, 0.95);
+            backdrop-filter: blur(10px);
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+            box-shadow: 0 4px 20px rgba(0,0,0,0.03);
+        }
+        .logo { font-size: 1.6rem; font-weight: 800; letter-spacing: -1px; color: var(--primary); text-decoration: none;}
+        .logo span { color: var(--accent); }
+        .nav-cta {
+            background-color: var(--primary);
+            color: var(--white);
+            padding: 10px 25px;
+            border-radius: 50px;
+            text-decoration: none;
+            font-weight: 600;
+            transition: transform 0.2s;
+        }
+        .nav-cta:hover { transform: scale(1.05); }
+
+        /* HERO - UPDATED FOR MOUSE EFFECT */
+        .hero {
+            position: relative;
+            height: 90vh;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            text-align: center;
+            color: white;
+            padding: 0 20px;
+            /* Background setup for sliding effect */
+            background-image: linear-gradient(180deg, rgba(2, 44, 34, 0.85) 0%, rgba(6, 78, 59, 0.9) 100%), 
+                              url('https://images.unsplash.com/photo-1611365892117-00ac5ef43c90?q=80&w=2070&auto=format&fit=crop');
+            background-size: 110%; /* Zoomed in to allow movement */
+            background-position: center center;
+            background-repeat: no-repeat;
+            border-bottom-left-radius: 50px;
+            border-bottom-right-radius: 50px;
+            overflow: hidden;
+            /* Smooth transition for the effect */
+            transition: background-position 0.1s linear;
+        }
+        .hero h1 { font-size: 3.5rem; line-height: 1.1; margin-bottom: 20px; font-weight: 800; max-width: 900px; text-shadow: 0 10px 30px rgba(0,0,0,0.3); pointer-events: none; }
+        .hero p { font-size: 1.25rem; max-width: 650px; margin-bottom: 40px; opacity: 0.9; font-weight: 300; pointer-events: none; }
+        
+        .hero-btn {
+            background: var(--accent);
+            color: var(--primary);
+            padding: 18px 45px;
+            font-size: 1.1rem;
+            font-weight: 800;
+            border-radius: 50px;
+            text-decoration: none;
+            box-shadow: 0 10px 30px rgba(52, 211, 153, 0.4);
+            transition: all 0.3s;
+            display: inline-block;
+            position: relative;
+            z-index: 5;
+        }
+        .hero-btn:hover { transform: translateY(-3px); box-shadow: 0 15px 40px rgba(52, 211, 153, 0.6); }
+
+        /* TRUST BAR */
+        .trust-bar {
+            max-width: 1100px;
+            margin: -60px auto 60px;
+            background: white;
+            padding: 40px;
+            border-radius: 20px;
+            box-shadow: 0 20px 50px rgba(0,0,0,0.08);
+            position: relative;
+            z-index: 10;
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 30px;
+            text-align: center;
+        }
+        .trust-item h3 { font-size: 2.5rem; color: var(--primary); margin: 0; font-weight: 800; }
+        .trust-item p { color: var(--text-gray); font-size: 0.9rem; text-transform: uppercase; letter-spacing: 1px; margin-top: 5px; font-weight: 600; }
+
+        /* PRODUCTS SECTION */
+        .products-section { padding: 80px 20px; background: white; margin-bottom: 80px; }
+        .section-header { text-align: center; margin-bottom: 50px; }
+        .section-header h2 { font-size: 2.5rem; margin-bottom: 15px; color: var(--primary); font-weight: 800; }
+        .section-header p { color: var(--text-gray); max-width: 600px; margin: 0 auto; font-size: 1.1rem; }
+
+        .brands-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 30px;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+        .brand-card {
+            background: #f8fafc;
+            border: 1px solid #e2e8f0;
+            padding: 30px;
+            border-radius: 20px;
+            transition: 0.3s;
+            text-align: left;
+        }
+        .brand-card:hover { transform: translateY(-5px); border-color: var(--accent); box-shadow: 0 10px 30px rgba(0,0,0,0.05); }
+        .brand-name { font-size: 1.4rem; font-weight: 800; margin-bottom: 10px; display: block; }
+        .brand-desc { color: var(--text-gray); font-size: 0.95rem; line-height: 1.5; }
+        .tag { display: inline-block; padding: 4px 12px; border-radius: 20px; font-size: 0.75rem; font-weight: 700; text-transform: uppercase; margin-bottom: 15px; color: white; }
+
+        /* TECH SECTION */
+        .section-container { max-width: 1200px; margin: 0 auto 120px; padding: 0 20px; }
+        .tech-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 60px; align-items: center; }
+        @media(max-width: 900px) { .tech-grid { grid-template-columns: 1fr; } }
+        .tech-card { display: flex; align-items: flex-start; margin-bottom: 40px; }
+        .tech-icon { font-size: 2rem; background: var(--light); color: var(--secondary); width: 60px; height: 60px; display: flex; align-items: center; justify-content: center; border-radius: 15px; margin-right: 20px; flex-shrink: 0; }
+        .tech-info h3 { margin: 0 0 10px; font-size: 1.4rem; font-weight: 700; }
+        .tech-info p { margin: 0; color: var(--text-gray); line-height: 1.6; }
+        .tech-img-wrapper { position: relative; }
+        .tech-img { width: 100%; border-radius: 24px; box-shadow: 0 20px 40px rgba(0,0,0,0.1); }
+
+        /* FLOATING CTA */
+        .floating-cta {
+            position: fixed;
+            bottom: 30px;
+            right: 30px;
+            background: var(--accent);
+            color: var(--primary);
+            padding: 15px 30px;
+            border-radius: 50px;
+            font-weight: 800;
+            text-decoration: none;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.2);
+            z-index: 999;
+            transition: 0.3s;
+            display: none;
+        }
+        .floating-cta:hover { transform: scale(1.05); }
+    </style>
+</head>
+<body>
+
+<nav>
+    <a href="#" class="logo">Solaro<span>.</span></a>
+    <a href="comparison.html" class="nav-cta">Prendre RDV</a>
+</nav>
+
+<header class="hero" id="hero-bg">
+    <h1>L'Énergie Solaire Intelligente<br>pour votre Maison.</h1>
+    <p>Ne laissez rien au hasard. Conception par Drone, Simulation 3D et Matériel Haut de Gamme pour une rentabilité garantie.</p>
+    <a href="comparison.html" class="hero-btn">Configurer mon Installation</a>
+</header>
+
+<div class="trust-bar">
+    <div class="trust-item"><h3>150+</h3><p>Projets Installés</p></div>
+    <div class="trust-item"><h3>25 Ans</h3><p>Garantie Production</p></div>
+    <div class="trust-item"><h3>100%</h3><p>Précision Étude</p></div>
+</div>
+
+<section class="products-section">
+    <div class="section-header">
+        <h2>Nos Solutions Premium</h2>
+        <p>Nous avons sélectionné les 5 leaders mondiaux pour répondre à chaque besoin spécifique.</p>
+    </div>
+    <div class="brands-grid">
+        <div class="brand-card">
+            <span class="tag" style="background:var(--solplanet)">Budget</span>
+            <span class="brand-name" style="color:var(--solplanet)">Solplanet</span>
+            <p class="brand-desc">L'ingénierie allemande au meilleur prix. Idéal pour les toitures simples sans ombrage.</p>
+        </div>
+        <div class="brand-card">
+            <span class="tag" style="background:var(--huawei)">Performance</span>
+            <span class="brand-name" style="color:var(--huawei)">Huawei</span>
+            <p class="brand-desc">Le géant de la tech. Ses optimiseurs garantissent une production maximale même si vous avez de l'ombre.</p>
+        </div>
+        <div class="brand-card">
+            <span class="tag" style="background:var(--sungrow)">Hybride</span>
+            <span class="brand-name" style="color:var(--sungrow)">Sungrow</span>
+            <p class="brand-desc">La robustesse industrielle. La référence pour les systèmes avec backup puissant.</p>
+        </div>
+        <div class="brand-card">
+            <span class="tag" style="background:var(--solax)">Stockage</span>
+            <span class="brand-name" style="color:var(--solax)">Solax</span>
+            <p class="brand-desc">Le spécialiste de la batterie. Excellent rapport qualité/prix pour maximiser votre autoconsommation.</p>
+        </div>
+        <div class="brand-card">
+            <span class="tag" style="background:var(--sigen)">IA & Design</span>
+            <span class="brand-name" style="color:var(--sigen)">Sigenergy</span>
+            <p class="brand-desc">Le futur de l'énergie. Système 5-en-1 intégrant chargeur de voiture électrique et intelligence artificielle.</p>
+        </div>
+    </div>
+</section>
+
+<section class="section-container">
+    <div class="section-header">
+        <h2>Pourquoi choisir Solaro ?</h2>
+    </div>
+    <div class="tech-grid">
+        <div>
+            <div class="tech-card">
+                <div class="tech-icon">🚁</div>
+                <div class="tech-info"><h3>Études par Drone & IA</h3><p>Nous scannons votre toiture au laser pour détecter chaque ombrage au centimètre près.</p></div>
+            </div>
+            <div class="tech-card">
+                <div class="tech-icon">📱</div>
+                <div class="tech-info"><h3>Pilotage Connecté</h3><p>Suivez votre production en temps réel et pilotez votre chauffe-eau à distance.</p></div>
+            </div>
+            <div class="tech-card">
+                <div class="tech-icon">🏅</div>
+                <div class="tech-info"><h3>Installation Certifiée</h3><p>Nos équipes techniques sont certifiées RGE pour vous garantir les aides de l'État.</p></div>
+            </div>
+        </div>
+        <div class="tech-img-wrapper">
+            <img src="https://images.unsplash.com/photo-1559302504-64aae6ca6b6f?q=80&w=1964&auto=format&fit=crop" alt="Installation Solaire Moderne" class="tech-img">
+        </div>
+    </div>
+</section>
+
+<a href="comparison.html" class="floating-cta" id="floatingBtn">Configurer mon Projet ⚡</a>
+
+<script>
+    // 1. FLOATING BUTTON
+    window.addEventListener('scroll', function() {
+        const btn = document.getElementById('floatingBtn');
+        if (window.scrollY > 500) { btn.style.display = 'inline-block'; } else { btn.style.display = 'none'; }
+    });
+
+    // 2. MOUSE PARALLAX EFFECT
+    const hero = document.getElementById('hero-bg');
+    
+    // Only activate on desktop (width > 768px) to save battery on mobile
+    if (window.matchMedia("(min-width: 768px)").matches) {
+        document.addEventListener('mousemove', (e) => {
+            const x = e.clientX / window.innerWidth;
+            const y = e.clientY / window.innerHeight;
+            
+            // Move the background opposite to the mouse
+            // We start at center (50% 50%) and move by +/- 5%
+            const moveX = 50 - (x * 4); // Move slightly horizontally
+            const moveY = 50 - (y * 4); // Move slightly vertically
+            
+            hero.style.backgroundPosition = `${moveX}% ${moveY}%`;
+        });
+    }
+</script>
+
+</body>
+</html>

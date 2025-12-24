@@ -1,0 +1,252 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Solaro - Comparateur Détaillé</title>
+    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;600;800&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --bg-dark: #022c22;
+            --surface: #0f172a;
+            --accent: #34d399;
+            --text-white: #ffffff;
+            --text-dim: #94a3b8;
+            --border: rgba(255,255,255,0.1);
+            --solplanet: #10b981; --huawei: #ef4444; --sigen: #8b5cf6; --sungrow: #f97316; --solax: #3b82f6;
+        }
+        body { font-family: 'Outfit', sans-serif; background-color: var(--bg-dark); color: var(--text-white); margin: 0; padding: 0; min-height: 100vh; }
+        
+        /* NAV */
+        nav { padding: 25px 40px; display: flex; justify-content: space-between; align-items: center; }
+        .logo { font-size: 1.5rem; font-weight: 800; letter-spacing: -1px; color: white; text-decoration: none; }
+        .logo span { color: var(--accent); }
+        .back-link { color: var(--text-dim); text-decoration: none; font-size: 0.9rem; transition:0.3s;}
+        .back-link:hover { color: var(--accent); }
+
+        .header { text-align: center; padding: 30px 20px 10px; }
+        .header h1 { font-size: 2.2rem; font-weight: 800; margin-bottom: 10px; }
+        .header p { color: var(--text-dim); max-width: 600px; margin: 0 auto; font-size: 1rem; }
+
+        /* --- NEW SECTION: PRODUCT BRIEF --- */
+        .product-brief {
+            max-width: 1000px;
+            margin: 30px auto;
+            padding: 0 20px;
+            text-align: center;
+        }
+        .brief-grid {
+            display: flex;
+            justify-content: center;
+            flex-wrap: wrap;
+            gap: 15px;
+            margin-top: 20px;
+        }
+        .brief-item {
+            background: rgba(255,255,255,0.05);
+            border: 1px solid rgba(255,255,255,0.1);
+            padding: 10px 20px;
+            border-radius: 50px;
+            font-size: 0.85rem;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            transition: 0.3s;
+        }
+        .brief-item:hover { background: rgba(255,255,255,0.1); transform: translateY(-2px); }
+        .dot { width: 8px; height: 8px; border-radius: 50%; display: inline-block; }
+
+        /* QUIZ */
+        .quiz-wrapper { max-width: 1000px; margin: 0 auto 50px; padding: 0 20px; }
+        .quiz-card { background: rgba(255, 255, 255, 0.03); backdrop-filter: blur(12px); border: 1px solid var(--border); border-radius: 24px; padding: 40px; min-height: 300px; }
+
+        .progress-track { width: 100%; background: rgba(255,255,255,0.1); height: 6px; border-radius: 10px; margin-bottom: 30px; }
+        .progress-fill { height: 100%; background: var(--accent); width: 20%; transition: 0.4s ease; }
+        .step { display: none; }
+        .step.active { display: block; animation: slideIn 0.4s ease; }
+        @keyframes slideIn { from { opacity:0; transform:translateY(10px); } to { opacity:1; transform:translateY(0); } }
+        
+        .options-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 20px; }
+        .option-btn { background: rgba(255,255,255,0.05); border: 2px solid transparent; padding: 20px; border-radius: 16px; cursor: pointer; transition: 0.3s; text-align: left; }
+        .option-btn:hover { border-color: var(--accent); background: rgba(255,255,255,0.1); }
+        .icon { font-size: 1.5rem; display: block; margin-bottom: 10px; }
+        .label { font-weight: 700; display: block; }
+
+        #results-area { display: none; margin-top: 40px; }
+        .results-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(180px, 1fr)); gap: 15px; }
+        .result-mini-card { background: var(--surface); padding: 15px; border-radius: 15px; text-align: center; opacity: 0.5; filter: grayscale(1); cursor: pointer; transition: 0.3s; border: 2px solid transparent; }
+        .result-mini-card:hover { opacity: 0.8; }
+        .result-mini-card.active { opacity: 1; filter: grayscale(0); border-color: var(--accent); transform: scale(1.05); }
+        .mini-name { font-weight: 800; display: block; margin-top: 5px; }
+
+        #product-detail-view { display: none; background: white; color: var(--bg-dark); margin-top: 40px; border-radius: 30px; overflow: hidden; box-shadow: 0 0 100px rgba(52, 211, 153, 0.2); animation: slideUp 0.6s ease; }
+        @keyframes slideUp { from { transform: translateY(50px); opacity: 0; } to { transform: translateY(0); opacity: 1; } }
+        .detail-layout { display: grid; grid-template-columns: 1fr 1fr; }
+        @media(max-width: 800px) { .detail-layout { grid-template-columns: 1fr; } }
+        .detail-visual { background: #f1f5f9; padding: 40px; display: flex; flex-direction: column; align-items: center; justify-content: center; text-align: center; }
+        .product-img { max-width: 80%; max-height: 300px; object-fit: contain; margin-bottom: 20px; mix-blend-mode: multiply; }
+        .product-tag { background: var(--bg-dark); color: var(--accent); padding: 5px 15px; border-radius: 20px; font-weight: 800; font-size: 0.8rem; text-transform: uppercase; }
+        .detail-content { padding: 40px; }
+        .detail-title { font-size: 2rem; margin: 0 0 5px; color: var(--bg-dark); font-weight: 800; }
+        .detail-subtitle { color: #64748b; font-size: 1.1rem; margin-bottom: 30px; display: block; font-weight: 600; }
+        .spec-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 20px; margin-bottom: 30px; }
+        .spec-item { border-bottom: 1px solid #e2e8f0; padding-bottom: 10px; }
+        .spec-label { display: block; font-size: 0.8rem; color: #94a3b8; text-transform: uppercase; font-weight: 700; }
+        .spec-value { display: block; font-size: 1.1rem; color: var(--bg-dark); font-weight: 600; }
+        .why-this { background: #ecfdf5; border-left: 4px solid var(--accent); padding: 15px; color: #064e3b; font-size: 0.95rem; line-height: 1.5; margin-bottom: 30px; border-radius: 0 10px 10px 0; }
+        
+        .lead-btn { 
+            width: 100%; padding: 15px; background: var(--accent); color: var(--bg-dark); 
+            border: none; border-radius: 8px; font-weight: 800; cursor: pointer; 
+            font-size: 1rem; transition: 0.3s; margin-top: 10px; display:block; text-align:center; text-decoration:none;
+        }
+        .lead-btn:hover { transform: translateY(-2px); box-shadow: 0 5px 15px rgba(52, 211, 153, 0.4); }
+    </style>
+</head>
+<body>
+
+<nav>
+    <a href="reservation.html" class="logo">Solaro<span>.</span></a>
+    <a href="reservation.html" class="back-link">← Retour</a>
+</nav>
+
+<div class="header">
+    <h1>Configurateur Solaro</h1>
+    <p>Notre algorithme sélectionne la meilleure technologie pour votre maison.</p>
+</div>
+
+<div class="product-brief">
+    <p style="color:#94a3b8; font-size:0.95rem;">Nous travaillons exclusivement avec les 5 leaders mondiaux pour couvrir tous les besoins :</p>
+    <div class="brief-grid">
+        <div class="brief-item"><span class="dot" style="background:var(--solplanet)"></span> <strong>Solplanet</strong> (Budget)</div>
+        <div class="brief-item"><span class="dot" style="background:var(--huawei)"></span> <strong>Huawei</strong> (Ombrage)</div>
+        <div class="brief-item"><span class="dot" style="background:var(--sungrow)"></span> <strong>Sungrow</strong> (Hybride)</div>
+        <div class="brief-item"><span class="dot" style="background:var(--solax)"></span> <strong>Solax</strong> (Stockage)</div>
+        <div class="brief-item"><span class="dot" style="background:var(--sigen)"></span> <strong>Sigenergy</strong> (IA & VE)</div>
+    </div>
+</div>
+
+<div class="quiz-wrapper">
+    <div class="quiz-card">
+        <div class="progress-track"><div class="progress-fill" id="progressBar"></div></div>
+
+        <div class="step active" id="q1">
+            <h2>1. Configuration Toiture ?</h2>
+            <div class="options-grid">
+                <div class="option-btn" onclick="nextStep(1, 'shade', false)"><span class="icon">☀️</span><span class="label">Simple</span></div>
+                <div class="option-btn" onclick="nextStep(1, 'shade', true)"><span class="icon">🌳</span><span class="label">Ombrage</span></div>
+            </div>
+        </div>
+        <div class="step" id="q2">
+            <h2>2. Véhicule Électrique ?</h2>
+            <div class="options-grid">
+                <div class="option-btn" onclick="nextStep(2, 'ev', false)"><span class="icon">❌</span><span class="label">Non</span></div>
+                <div class="option-btn" onclick="nextStep(2, 'ev', true)"><span class="icon">🚗</span><span class="label">Oui</span></div>
+            </div>
+        </div>
+        <div class="step" id="q3">
+            <h2>3. Batterie ?</h2>
+            <div class="options-grid">
+                <div class="option-btn" onclick="nextStep(3, 'battery', false)"><span class="icon">⚡</span><span class="label">Non</span></div>
+                <div class="option-btn" onclick="nextStep(3, 'battery', true)"><span class="icon">🔋</span><span class="label">Oui</span></div>
+            </div>
+        </div>
+        <div class="step" id="q4">
+            <h2>4. Priorité ?</h2>
+            <div class="options-grid">
+                <div class="option-btn" onclick="calculateResult('budget')"><span class="icon">💰</span><span class="label">Budget</span></div>
+                <div class="option-btn" onclick="calculateResult('tech')"><span class="icon">🚀</span><span class="label">Tech</span></div>
+            </div>
+        </div>
+
+        <div id="results-area">
+            <h3 style="text-align:center; margin-bottom:20px;">Votre profil correspond à :</h3>
+            <div class="results-grid">
+                <div class="result-mini-card" id="btn-solplanet" onclick="showDetails('solplanet')"><span style="color:var(--solplanet); font-size:1.5rem;">●</span><span class="mini-name">Solplanet</span></div>
+                <div class="result-mini-card" id="btn-huawei" onclick="showDetails('huawei')"><span style="color:var(--huawei); font-size:1.5rem;">●</span><span class="mini-name">Huawei</span></div>
+                <div class="result-mini-card" id="btn-sungrow" onclick="showDetails('sungrow')"><span style="color:var(--sungrow); font-size:1.5rem;">●</span><span class="mini-name">Sungrow</span></div>
+                <div class="result-mini-card" id="btn-solax" onclick="showDetails('solax')"><span style="color:var(--solax); font-size:1.5rem;">●</span><span class="mini-name">Solax</span></div>
+                <div class="result-mini-card" id="btn-sigen" onclick="showDetails('sigen')"><span style="color:var(--sigen); font-size:1.5rem;">●</span><span class="mini-name">Sigenergy</span></div>
+            </div>
+        </div>
+
+        <div id="product-detail-view">
+            <div class="detail-layout">
+                <div class="detail-visual">
+                    <span class="product-tag" id="detail-badge">RECOMMANDÉ</span>
+                    <img src="https://cdn-icons-png.flaticon.com/512/3222/3222802.png" id="detail-img" class="product-img" alt="Solar Inverter">
+                </div>
+                <div class="detail-content">
+                    <h2 class="detail-title" id="detail-title">Brand Name</h2>
+                    <span class="detail-subtitle" id="detail-model">Model Series</span>
+                    <div class="why-this" id="detail-reason">Explication dynamique...</div>
+                    <div class="spec-grid">
+                        <div class="spec-item"><span class="spec-label">Garantie</span><span class="spec-value" id="spec-warranty">10 Ans</span></div>
+                        <div class="spec-item"><span class="spec-label">Technologie</span><span class="spec-value" id="spec-tech">String</span></div>
+                        <div class="spec-item"><span class="spec-label">Application</span><span class="spec-value" id="spec-app">Standard</span></div>
+                        <div class="spec-item"><span class="spec-label">Type</span><span class="spec-value" id="spec-type">Onduleur</span></div>
+                    </div>
+                    
+                    <div style="margin-top:30px; text-align:center;">
+                        <h4 style="color:var(--bg-dark); margin-bottom:15px;">📅 Prêt à lancer votre projet ?</h4>
+                        <p style="color:#64748b; font-size:0.9rem; margin-bottom:20px;">
+                            Réservez un créneau avec nos experts pour discuter du modèle sélectionné.
+                        </p>
+                        <a href="https://rdv.solaro.green/" target="_blank" class="lead-btn">
+                            Réserver un Expert maintenant
+                        </a>
+                    </div>
+
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<script>
+    const brandData = {
+        solplanet: { title: "Solplanet", model: "Série ASW 3-6K", badge: "Choix Malin", reason: "Vous avez une toiture simple et cherchez la rentabilité maximale.", specs: { warranty: "10 Ans", tech: "Double MPPT", app: "Solplanet Cloud", type: "Onduleur" } },
+        huawei: { title: "Huawei FusionSolar", model: "SUN2000 + Optimiseurs", badge: "Performance", reason: "Idéal pour votre toiture ombragée. Les optimiseurs gèrent chaque panneau indépendamment.", specs: { warranty: "25 Ans (Opti)", tech: "Optimiseurs", app: "FusionSolar", type: "Hybride Ready" } },
+        sungrow: { title: "Sungrow", model: "SH Series Hybrid", badge: "Robuste", reason: "Vous cherchez la sécurité et un backup puissant.", specs: { warranty: "10 Ans", tech: "Backup Intégré", app: "iSolarCloud", type: "Hybride" } },
+        solax: { title: "Solax Power", model: "X-ESS G4", badge: "Expert Stockage", reason: "Le meilleur rapport qualité/prix pour le stockage.", specs: { warranty: "10 Ans", tech: "All-in-One", app: "Solax Cloud", type: "Hybride + Bat" } },
+        sigen: { title: "Sigenergy", model: "SigenStor 5-in-1", badge: "Futuriste", reason: "Le choix parfait pour votre Véhicule Électrique.", specs: { warranty: "15 Ans", tech: "IA Embarquée", app: "mySigen GPT-4", type: "5-en-1" } }
+    };
+
+    let userAnswers = {};
+    function nextStep(step, key, value) {
+        userAnswers[key] = value;
+        let progress = (step / 4) * 100;
+        document.getElementById('progressBar').style.width = progress + '%';
+        document.getElementById('q' + step).classList.remove('active');
+        document.getElementById('q' + (step + 1)).classList.add('active');
+    }
+    function calculateResult(priority) {
+        let winner = 'solplanet';
+        if (userAnswers.shade) winner = 'huawei';
+        if (userAnswers.ev) winner = 'sigen';
+        if (userAnswers.battery && priority === 'tech') winner = 'sungrow';
+        if (userAnswers.battery && priority === 'budget') winner = 'solax';
+        document.getElementById('q4').style.display = 'none';
+        document.getElementById('results-area').style.display = 'block';
+        showDetails(winner);
+    }
+    function showDetails(brandKey) {
+        const data = brandData[brandKey];
+        document.querySelectorAll('.result-mini-card').forEach(c => c.classList.remove('active'));
+        document.getElementById('btn-' + brandKey).classList.add('active');
+        document.getElementById('detail-title').innerText = data.title;
+        document.getElementById('detail-model').innerText = data.model;
+        document.getElementById('detail-badge').innerText = data.badge;
+        document.getElementById('detail-reason').innerText = data.reason;
+        document.getElementById('spec-warranty').innerText = data.specs.warranty;
+        document.getElementById('spec-tech').innerText = data.specs.tech;
+        document.getElementById('spec-app').innerText = data.specs.app;
+        document.getElementById('spec-type').innerText = data.specs.type;
+        const view = document.getElementById('product-detail-view');
+        view.style.display = 'none';
+        setTimeout(() => { view.style.display = 'block'; view.scrollIntoView({ behavior: 'smooth', block: 'center' }); }, 10);
+    }
+</script>
+
+</body>
+</html>
